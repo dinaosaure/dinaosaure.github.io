@@ -213,12 +213,12 @@ section {
     text-align: center;
 }
 .starter-pack-image {
-    display: block;             /* Nécessaire pour margin auto */
-    max-width: 700px;           /* Limite absolue (ajuste si besoin) */
-    width: 30%;                 /* Taille relative, limitée par max-width */
-    margin-left: auto;          /* Centre */
-    margin-right: auto;         /* Centre */
-    height: auto;               /* Garde le ratio */
+    display: block;
+    max-width: 700px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -289,66 +289,25 @@ section {
 .project-links a, .link-placeholder { margin-right: 15px; font-weight: 500; font-size: 0.9rem; }
 
 /* === Styling for Image Attribution Link === */
-.image-attribution {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.8rem;
-    color: var(--text-medium);
-    text-align: left;
-}
-.image-attribution a {
-    color: var(--text-medium);
-    text-decoration: underline;
-    transition: color 0.3s ease;
-}
-.image-attribution a:hover {
-    color: var(--text-light);
-}
+.image-attribution { display: block; margin-top: 10px; font-size: 0.8rem; color: var(--text-medium); text-align: left; }
+.image-attribution a { color: var(--text-medium); text-decoration: underline; transition: color 0.3s ease; }
+.image-attribution a:hover { color: var(--text-light); }
 /* ===================================== */
 
 .see-all-button { display: block; width: fit-content; margin: 4rem auto 0 auto; text-align: center; }
+
+/* === Styling for Coming Soon Message === */
+.coming-soon-message { text-align: center; margin-top: 4rem; margin-bottom: 2rem; color: var(--text-medium); font-style: italic; font-size: 1.1rem; }
+/* ==================================== */
 
 /* ===== CONTACT SECTION ===== */
 .contact-section { text-align: center; }
 .contact-section p { max-width: 600px; margin: 0 auto 3rem auto; font-size: 1.1rem; }
 
-.contact-links {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.contact-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-light);
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding: 12px 25px;
-    border: 2px solid var(--border-color);
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    min-width: 150px;
-    text-align: center;
-}
-
-.contact-link i {
-    margin-right: 10px;
-    font-size: 1.2em;
-    line-height: 1;
-}
-
-.contact-link:hover {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-    background-color: rgba(52, 152, 219, 0.1);
-    transform: translateY(-2px);
-}
+.contact-links { list-style: none; padding: 0; display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.contact-link { display: inline-flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 1.1rem; font-weight: 500; padding: 12px 25px; border: 2px solid var(--border-color); border-radius: 30px; transition: all 0.3s ease; min-width: 150px; text-align: center; }
+.contact-link i { margin-right: 10px; font-size: 1.2em; line-height: 1; }
+.contact-link:hover { color: var(--accent-color); border-color: var(--accent-color); background-color: rgba(52, 152, 219, 0.1); transform: translateY(-2px); }
 
 /* ===== FOOTER ===== */
 .site-footer { background-color: var(--bg-dark-primary); color: var(--text-medium); text-align: center; padding: 2.5rem 0; margin-top: 60px; border-top: 1px solid var(--border-color); font-size: 0.9rem; }
@@ -357,26 +316,8 @@ section {
 .site-footer a:hover { color: var(--accent-color); }
 
 /* ===== SCROLL REVEAL ANIMATION ===== */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.scroll-reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* === Styling for Coming Soon Message === */
-.coming-soon-message {
-    text-align: center;       /* Centre le texte */
-    margin-top: 4rem;         /* Espace au-dessus (similaire au bouton) */
-    margin-bottom: 2rem;      /* Espace en dessous, avant le bouton "Back to Home" */
-    color: var(--text-medium); /* Couleur plus discrète */
-    font-style: italic;       /* Style italique */
-    font-size: 1.1rem;        /* Taille de police */
-}
-/* ==================================== */
+.scroll-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 992px) {
@@ -392,8 +333,33 @@ section {
     .hero-profile-pic { width: 150px; height: 150px; }
 
     .menu-toggle { display: block; }
-    .main-nav ul { display: none; flex-direction: column; width: 100%; position: absolute; top: 75px; /* Adjust if needed */ left: 0; background-color: var(--bg-dark-secondary); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); padding: 1rem 0; border-top: 1px solid var(--border-color); }
-    .main-nav ul.active { display: flex; } /* For JS toggle */
+
+    /* === Mobile Menu Transition Styles === */
+    .main-nav ul {
+        display: flex; /* Needed for flex-direction */
+        flex-direction: column;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px); /* Start slightly above */
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        /* Positioning styles */
+        width: 100%;
+        position: absolute;
+        top: 75px; /* Adjust based on actual header height */
+        left: 0;
+        background-color: var(--bg-dark-secondary);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        padding: 1rem 0;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .main-nav ul.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0); /* End at normal position */
+    }
+    /* ==================================== */
+
     .main-nav ul li { margin: 0; text-align: center; }
     .main-nav ul li a { display: block; padding: 1rem 0; border-bottom: 1px solid var(--border-color); width: 100%; }
     .main-nav ul li:last-child a { border-bottom: none; }
@@ -408,23 +374,12 @@ section {
     .timeline-item:nth-child(odd)::before, .timeline-item:nth-child(even)::before { left: 60px; border-width: 10px 10px 10px 0; border-color: transparent var(--bg-dark-secondary) transparent transparent; }
 
     /* Updated Mobile Contact Links Style */
-    .contact-links {
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: center;
-    }
-    .contact-link {
-        width: 80%;
-        max-width: 300px;
-    }
+    .contact-links { flex-direction: column; gap: 1.5rem; align-items: center; }
+    .contact-link { width: 80%; max-width: 300px; }
     /* -------------------------------- */
 
     /* Starter pack image smaller on mobile */
-    .starter-pack-image {
-        max-width: 90%; /* Peut-être un peu plus grand relativement */
-        width: 90%;
-    }
-
+    .starter-pack-image { max-width: 90%; width: 90%; }
 }
 
 @media (max-width: 480px) {
@@ -438,13 +393,10 @@ section {
     section { padding: 60px 0; }
     .project-grid { grid-template-columns: 1fr; }
     .experience-grid { grid-template-columns: 1fr; }
-    .timeline::after { left: 20px; } /* Adjust timeline line */
+    .timeline::after { left: 20px; }
     .timeline-item { padding-left: 50px; }
     .timeline-item::after { left: 10px; width: 15px; height: 15px; }
     .timeline-item::before { left: 45px; }
 
-    .starter-pack-image {
-        max-width: 95%;
-        width: 95%;
-    }
+    .starter-pack-image { max-width: 95%; width: 95%; }
 }
