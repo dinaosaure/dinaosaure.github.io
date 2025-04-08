@@ -367,6 +367,17 @@ section {
     transform: translateY(0);
 }
 
+/* === Styling for Coming Soon Message === */
+.coming-soon-message {
+    text-align: center;       /* Centre le texte */
+    margin-top: 4rem;         /* Espace au-dessus (similaire au bouton) */
+    margin-bottom: 2rem;      /* Espace en dessous, avant le bouton "Back to Home" */
+    color: var(--text-medium); /* Couleur plus discrète */
+    font-style: italic;       /* Style italique */
+    font-size: 1.1rem;        /* Taille de police */
+}
+/* ==================================== */
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 992px) {
     h2 { font-size: 2.4rem; margin-bottom: 3rem; }
