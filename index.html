@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- --- Meta Tags Essentiels --- -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- --- Meta Tags SEO --- -->
+    <meta name="description" content="Dina Didouche's personal portfolio website showcasing projects, skills, and experience.">
+    <meta name="keywords" content="Dina Didouche, portfolio, computer science, student, EPITA, web development, projects">
+    <meta name="author" content="Dina Didouche">
+
+    <!-- --- Titre --- -->
+    <title>Dina's Website</title>
+
+    <!-- --- Favicons --- -->
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="images/profilepic.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="images/profilepic.jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/profilepic.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="192x192" href="images/profilepic.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="512x512" href="images/profilepic.jpeg">
+    <link rel="shortcut icon" href="images/profilepic.jpeg">
+
+    <!-- --- Liens CSS et Fonts --- -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Link to your CSS stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+    <!-- ===== HEADER / NAVIGATION ===== -->
+    <header class="site-header">
+        <div class="container">
+            <a href="#accueil" class="site-logo">Dina Didouche</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#accueil">Home</a></li>
+                    <li><a href="#a-propos">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projets">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+
+        <!-- --- Home Section (Hero) --- -->
+        <section id="accueil" class="hero-section">
+            <div class="container">
+                 <img src="images/profilepic.jpeg" alt="Dina Didouche Profile Picture" class="hero-profile-pic"> 
+                <h1>Dina Didouche</h1>
+                <p class="subtitle">Computer Science Engineering Student | EPITA</p>
+                <p>Passionate about technology, cybersecurity, and problem-solving. Currently exploring web development and mobile applications.</p>
+                <a href="#a-propos" class="cta-button">Learn More</a>
+            </div>
+        </section>
+
+        <!-- --- About Section (Intro + Skills + Languages) --- -->
+        <section id="a-propos" class="about-section dark-section">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-intro">
+                   <p>Driven student pursuing a Computer Science Engineering degree at EPITA and a Bachelor's in CS at UPEC. I thrive on challenges and enjoy applying my skills to create tangible solutions. Eager to learn and contribute in the tech world.</p>
+                </div>
+
+                <!-- === STARTER PACK === -->
+                <div class="starter-pack-container scroll-reveal">
+                    <img src="images/StarterPack.png" alt="My Starter Pack" class="starter-pack-image"> <!-- Utilisation de StarterPack.jpg -->
+                </div>
+                <!-- ====================================== -->
+
+                <div class="skills-languages-grid">
+                    <div class="skills-box">
+                        <h3>Technical Skills</h3>
+
+                        <p><strong>Programming Languages:</strong></p>
+                        <div class="skill-bubbles-container">
+                            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Python</a>
+                            <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer" class="skill-bubble">C#</a>
+                            <a href="https://en.cppreference.com/w/c/language" target="_blank" rel="noopener noreferrer" class="skill-bubble">C</a>
+                            <a href="https://www.java.com/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Java</a>
+                            <a href="https://kotlinlang.org/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Kotlin</a>
+                            <a href="https://ocaml.org/" target="_blank" rel="noopener noreferrer" class="skill-bubble">OCaml</a>
+                            <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Bash</a>
+                        </div>
+
+                        <p><strong>Operating Systems:</strong></p>
+                         <div class="skill-bubbles-container">
+                            <a href="https://www.linux.org/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Linux</a>
+                            <a href="https://www.microsoft.com/windows/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Windows</a>
+                            <a href="https://www.apple.com/macos/" target="_blank" rel="noopener noreferrer" class="skill-bubble">macOS</a>
+                        </div>
+
+                        <p><strong>Tools & Technologies:</strong></p>
+                         <div class="skill-bubbles-container">
+                           <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Git</a>
+                           <a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Flutter</a>
+                           <a href="https://developer.android.com/studio" target="_blank" rel="noopener noreferrer" class="skill-bubble">Android Studio</a>
+                           <a href="https://www.jetbrains.com/rider/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Rider</a>
+                           <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer" class="skill-bubble">VS Code</a>
+                           <a href="https://www.vim.org/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Vim</a>
+                            <a href="https://www.gnu.org/software/emacs/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Emacs</a>
+                           <a href="https://godotengine.org/" target="_blank" rel="noopener noreferrer" class="skill-bubble">Godot Engine</a>
+                           <a href="https://www.latex-project.org/" target="_blank" rel="noopener noreferrer" class="skill-bubble">LaTeX</a>
+                        </div>
+                    </div>
+
+                    <div class="languages-box">
+                         <h3>Languages</h3>
+                        <ul>
+                            <li>🇫🇷 French (Native)</li>
+                            <li>🇬🇧 English (C1 - TOEFL)</li>
+                            <li>🇪🇸 Spanish (B2)</li>
+                            <li>🇨🇳 Chinese (B1 - HSK 2 & 3)</li>
+                            <li>🇩🇿 Arabic (Dialect - Notions)</li>
+                        </ul>
+                    </div>
+                </div>
+                 <a href="CV Dina Didouche.pdf" download class="cta-button download-cv-button">Download my Resume</a>
+            </div>
+        </section>
+
+         <!-- --- Education Section --- -->
+        <section id="education" class="education-section light-section">
+             <div class="container">
+                <h2>Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item scroll-reveal">
+                        <div class="timeline-content">
+                            <h3>EPITA: School of Engineering and Computer Science</h3>
+                            <p>Master's Degree in Computer Science Engineering (2023 - 2028)</p>
+                            <p class="details">Current: 2nd Year Student. Focus on Algorithms, Programming, Mathematics.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item scroll-reveal">
+                        <div class="timeline-content">
+                            <h3>Universidad Politécnica de Madrid (UPM)</h3>
+                            <p>International Semester (ETSISI) - Computer Science (Feb 2025 - Jun 2025)</p>
+                            <p class="details">Courses: IT Security, Concurrent & Advanced Programming, Mobile App Development, Embedded Systems Modeling, English for Professional Communication.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item scroll-reveal">
+                        <div class="timeline-content">
+                            <h3>Université Paris-Est Créteil (UPEC)</h3>
+                            <p>Bachelor's Degree in Science, Technology - Computer Science Major (2023 - 2026)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item scroll-reveal">
+                        <div class="timeline-content">
+                             <h3>Lycée Jean de La Fontaine</h3>
+                             <p>Baccalauréat - Mention 'Bien' (2023)</p>
+                             <p class="details">Specializations: Mathematics, Physics-Chemistry; Expert Mathematics Option.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item scroll-reveal">
+                        <div class="timeline-content">
+                            <h3>Conservatoire Municipal Francis Poulenc (Paris 16)</h3>
+                            <p>Certificate of Musical Studies (CEM) (2011 - 2023)</p>
+                            <p class="details">Disciplines: Violin, Singing, Orchestra, Music Theory, Piano.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- Experience Section --- -->
+        <section id="experience" class="experience-section dark-section">
+            <div class="container">
+                <h2>Experience & Volunteering</h2>
+                 <div class="experience-grid">
+                    <article class="experience-card scroll-reveal">
+                        <img src="images/logos/unicef_logo_placeholder.png" alt="UNICEF Logo" class="experience-logo">
+                        <h3>Young Ambassador - UNICEF</h3>
+                        <p>Assisted with fundraising efforts for Ukraine relief. Participated as a volunteer in various events (Paris Marathon, UNICEF 75th anniversary).</p>
+                        <span class="experience-date">Ongoing</span>
+                    </article>
+                     <article class="experience-card scroll-reveal">
+                         <img src="images/logos/prologin_logo_placeholder.png" alt="Prologin Logo" class="experience-logo">
+                        <h3>Volunteer - Association Prologin</h3>
+                        <p>Introduced computer science concepts through school workshops and "Girls Can Code!" stages.</p>
+                         <span class="experience-date">Ongoing</span>
+                    </article>
+                     <article class="experience-card scroll-reveal">
+                         <img src="images/logos/optique_logo_placeholder.png" alt="Optics Logo" class="experience-logo">
+                        <h3>Summer Internship - Optique des Princes</h3>
+                        <p>Explored the optics world and practiced customer relations in a retail environment (Paris).</p>
+                         <span class="experience-date">August 2024</span>
+                    </article>
+                     <article class="experience-card scroll-reveal">
+                         <img src="images/logos/medical_logo_placeholder.png" alt="Medical Icon" class="experience-logo">
+                        <h3>Observation Internship (3ème) - Réaumur Medical Center</h3>
+                        <p>Observed various health professions within a medical center setting (Paris).</p>
+                         <span class="experience-date">December 2019</span>
+                    </article>
+                 </div>
+                 <div class="interests-section">
+                    <h3>Interests</h3>
+                    <p>Beyond technology, I have a strong passion for music (Violin, Piano) cultivated through many years at the conservatory.</p>
+                 </div>
+            </div>
+        </section>
+
+        <!-- --- Projects Section (Homepage Preview - 3 projets) --- -->
+        <section id="projets" class="projects-section light-section">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <div class="project-grid">
+                    
+                    <article class="project-card scroll-reveal">
+                        <img src="images/projets/DevsPreview.png" alt="Devs Game Preview">
+                        <h3>Video Game "Devs" (EPITA Project)</h3>
+                        <p>Project lead for the creation of a rogue-like game named "Devs" during the 1st year programming curriculum.</p>
+                         <div class="project-links">
+                           <a href="https://github.com/CelinaMeiLin/SUPERDEVS" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
+                         </div>
+                    </article>
+
+                    <article class="project-card scroll-reveal">
+                        <img src="images/projets/afit-project-image.jpg" alt="AFIT Project Abstract Image">
+                       <h3>AFIT (EPITA Project)</h3>
+                       <p>Transcription of advanced arithmetic algorithms into the OCaml language. (2023-2024)</p>
+                       <div class="project-links">
+                          <span class="link-placeholder">Source code not available</span>
+                          <span class="image-attribution">
+                              <a href="https://www.vecteezy.com/free-photos/abstract">Abstract Stock photos by Vecteezy</a>
+                          </span>
+                       </div>
+                   </article>
+
+                    <article class="project-card scroll-reveal">
+                        <img src="images/projets/OCR.png" alt="S3 Project Preview">
+                         <h3>S3 Project - "Hidden Palace"</h3>
+                        <p>Project lead for implementing a word search solver in C, responsible for neural network development.</p>
+                         <div class="project-links">
+                            <a href="https://github.com/dinaosaure/HiddenPalace" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
+                        </div>
+                    </article>
+                </div>
+                <a href="projects.html" class="cta-button see-all-button">See All Projects</a>
+            </div>
+        </section>
+
+        <!-- --- Contact Section --- -->
+        <section id="contact" class="contact-section dark-section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>Interested in my profile, have a question, or want to discuss opportunities? Feel free to reach out!</p>
+                <ul class="contact-links">
+                    <li>
+                        <a href="mailto:dina.didouche@epita.fr" class="contact-link email">
+                            <i class="fas fa-envelope"></i>
+                            dina.didouche@epita.fr
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/dina-didouche" target="_blank" rel="noopener noreferrer" class="contact-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/dinaosaure" target="_blank" rel="noopener noreferrer" class="contact-link github">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="current-year"></span> Dina Didouche. All rights reserved.</p>
+            <p><a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+        </div>
+    </footer>
+
+    <!-- Link to JavaScript file -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>

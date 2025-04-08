@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>All Projects - Dina Didouche</title>
+
+    <!-- Link to the CSS stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- --- Favicons --- -->
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="images/profilepic.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="images/profilepic.jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/profilepic.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="192x192" href="images/profilepic.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="512x512" href="images/profilepic.jpeg">
+    <link rel="shortcut icon" href="images/profilepic.jpeg">
+
+</head>
+<body>
+
+    <!-- ===== HEADER / NAVIGATION ===== -->
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="site-logo">Dina Didouche</a> <!-- Link back to home -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#accueil">Home</a></li>
+                    <li><a href="index.html#a-propos">About</a></li>
+                    <li><a href="index.html#education">Education</a></li>
+                    <li><a href="index.html#experience">Experience</a></li>
+                    <li><a href="projects.html">Projects</a></li> <!-- This page is active -->
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+
+        <!-- --- All Projects Section --- -->
+        <section id="all-projects" class="projects-section light-section">
+            <div class="container">
+                <h2>All Projects & Internships</h2>
+                <div class="project-grid">
+
+                     <!-- 1. Projet Devs -->
+                    <article class="project-card scroll-reveal">
+                        <img src="images/projets/DevsPreview.png" alt="Devs Game Preview">
+                        <h3>Video Game "Devs" (EPITA Project)</h3>
+                        <p>Project lead for the creation of a rogue-like game named "Devs" during the 1st year programming curriculum.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/CelinaMeiLin/SUPERDEVS" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
+                        </div>
+                    </article>
+
+                     <!-- 2. Project AFIT -->
+                    <article class="project-card scroll-reveal">
+                        <img src="images/projets/afit-project-image.jpg" alt="AFIT Project Abstract Image">
+                       <h3>AFIT (EPITA Project)</h3>
+                       <p>Transcription of advanced arithmetic algorithms into the OCaml language. (2023-2024)</p>
+                       <div class="project-links">
+                          <span class="link-placeholder">Source code not available</span>
+                          <span class="image-attribution">
+                              <a href="https://www.vecteezy.com/free-photos/abstract">Abstract Stock photos by Vecteezy</a>
+                          </span>
+                       </div>
+                   </article>
+
+                    <!-- 3. Projet Hidden Palace -->
+                    <article class="project-card scroll-reveal">
+                        <img src="images/projets/OCR.png" alt="S3 Project Preview">
+                         <h3>S3 Project - "Hidden Palace"</h3>
+                        <p>Project lead for implementing a word search solver in C, responsible for neural network development.</p>
+                         <div class="project-links">
+                            <a href="https://github.com/dinaosaure/HiddenPalace" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
+                        </div>
+                    </article>
+
+                    <!-- 4. Projet Kotlin -->
+                     <article class="project-card scroll-reveal">
+                         <img src="images/projets/IMCTrack.jpg" alt="Kotlin App Preview">
+                        <h3>Kotlin Android App (UPM Semester)</h3>
+                        <p>Developed an Android mobile application in Kotlin during the Mobile App Development course (UPM international semester, 2025). Applied advanced mobile development concepts.</p>
+                         <div class="project-links">
+                           <a href="https://github.com/lucasbnrd05/epitie" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
+                        </div>
+                    </article>
+
+                     <!-- 5. Projet Flutter -->
+                     <article class="project-card scroll-reveal">
+                        <img src="images/projets/GreenWatch.jpg" alt="GreenWatch App Preview">
+                        <h3>GreenWatch - Environmental Monitoring App (UPM Semester)</h3>
+                        <p>Flutter-based mobile app (Kotlin) monitoring drought/flood impacts via real-time data, sensors & satellite imagery. Aims to improve resource management and disaster preparedness.</p>
+                        <!-- Lien GitHub fourni pour le projet Kotlin -->
+                         <div class="project-links">
+                           <a href="https://github.com/lucasbnrd05/epitie" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
+                        </div>
+                    </article>
+
+                     <!-- 6. Dernier projet -->
+                    <article class="project-card scroll-reveal">
+                        <img src="images/projets/placeholder-internship.png" alt="Medical Center Observation">
+                         <h3>Observation Internship (3ème)</h3>
+                        <p>Discovered various health professions at the Réaumur medical center, Paris. (December 2019)</p>
+                         <div class="project-links">
+                             <span class="link-placeholder">(Observation - No direct links)</span>
+                        </div>
+                    </article>
+                    <!-- ============================== -->
+
+                </div> <!-- End of .project-grid -->
+
+                 <a href="index.html" class="cta-button see-all-button">Back to Home</a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="current-year">2023</span> Dina Didouche. All rights reserved.</p> <!-- Default year -->
+            <p><a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+        </div>
+    </footer>
+
+    <!-- Link to JavaScript file -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
