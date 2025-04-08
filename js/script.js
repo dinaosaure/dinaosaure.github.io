@@ -19,12 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll Reveal Animation using Intersection Observer
     const revealElements = document.querySelectorAll('.scroll-reveal');
-    if (revealElements.length > 0) { // Check if elements exist before setting up observer
+    if (revealElements.length > 0) {
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Stop observing once visible
+                    observer.unobserve(entry.target);
                 }
                 else {
                      entry.target.classList.remove('is-visible');
