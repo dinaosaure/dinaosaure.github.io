@@ -242,13 +242,22 @@ section {
 .skill-bubble { display: inline-block; padding: 8px 18px; border: 2px solid var(--border-color); border-radius: 20px; font-size: 0.9rem; font-weight: 500; color: var(--text-light); background-color: transparent; transition: all 0.3s ease; white-space: nowrap; }
 .skill-bubble:hover { color: var(--accent-color); border-color: var(--accent-color); background-color: rgba(52, 152, 219, 0.1); transform: translateY(-2px); text-decoration: none; }
 
-/* === Spacing for Download CV Button === */
-.download-cv-button {
-    display: block;
-    width: fit-content;
-    margin: 4rem auto 0 auto;
+/* === Styling for CV Download Buttons Container === */
+.cv-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 4rem; /* Espace au-dessus */
 }
-/* ================================== */
+.download-cv-button {
+   margin: 0; /* Enlève la marge auto précédente */
+}
+.download-cv-button i {
+    margin-right: 8px; /* Espace icône/texte */
+}
+/* ================================================= */
 
 /* ===== EDUCATION SECTION (Timeline Style) ===== */
 .timeline { position: relative; max-width: 800px; margin: 0 auto; }
@@ -269,8 +278,7 @@ section {
     border: 1px solid var(--border-color);
     transition: background-color 0.3s ease, border-color 0.3s ease; /* Ajout transition */
 }
-/* Ajout :hover state */
-.timeline-content:hover {
+.timeline-content:hover { /* Ajout :hover state */
     background-color: var(--bg-dark-primary);
     border-color: var(--accent-color);
 }
@@ -291,8 +299,7 @@ section {
     align-items: center;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Ajout transition */
 }
-/* Ajout :hover state */
-.experience-card:hover {
+.experience-card:hover { /* Ajout :hover state */
     background-color: var(--bg-dark-secondary);
     transform: translateY(-5px);
 }
@@ -304,8 +311,7 @@ section {
     filter: grayscale(50%) contrast(120%);
     transition: filter 0.3s ease; /* Ajout transition */
 }
-/* Ajout :hover state pour logo */
-.experience-card:hover .experience-logo {
+.experience-card:hover .experience-logo { /* Ajout :hover state pour logo */
      filter: grayscale(0%) contrast(100%);
 }
 .experience-card h3 { font-size: 1.3rem; color: var(--accent-color); margin-bottom: 0.8rem; }
@@ -353,7 +359,7 @@ section {
 .site-footer a { color: var(--text-light); }
 .site-footer a:hover { color: var(--accent-color); }
 
-/* ===== Back to Top Button ===== AJOUTÉ ICI ===== */
+/* ===== Back to Top Button ===== */
 .back-to-top-btn {
     position: fixed;
     bottom: 30px;
