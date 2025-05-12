@@ -86,11 +86,12 @@ function setupMobileMenu() {
     const breakpoint = 768;
     window.addEventListener('resize', () => {
         // Use the same breakpoint as your CSS media query (768px)
-        if (window.innerWidth >= breakpoint && mainNavUl.classList.contains('active')) {
+        const isNavActive = mainNavUl.classList.contains('active');
+        if (window.innerWidth >= breakpoint && isNavActive) {
             closeMenu();
         }
 
-        else if (window.innerWidth <= breakpoint) {
+        else if (window.innerWidth <= breakpoint && !isNavActive) {
             mainNavUl.style.transition = 'none';
             mainNavUl.offsetWidth; // trigger reflow
             mainNavUl.style.transition = null;
