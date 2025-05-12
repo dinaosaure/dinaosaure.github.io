@@ -194,15 +194,29 @@ section {
     align-items: center;
 }
 .hero-profile-pic {
+    position: relative;
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    object-fit: cover;
     border: 5px solid var(--accent-color);
+    background-color: #001130;
     margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 0 25px rgba(52, 152, 219, 0.3);
+    overflow: hidden;
+}
+
+.hero-profile-pic::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("../images/profilepic.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transform: translateY(2px);
 }
 
 .hero-section h1 { font-size: 3.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-headings); }
