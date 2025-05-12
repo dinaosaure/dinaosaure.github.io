@@ -691,8 +691,12 @@ button:focus-visible,
 
     .timeline::after { left: 20px; }
     .timeline-item { padding-left: 50px; }
-    .timeline-item::after { left: 20px; width: 25px; height: 25px; }
+
     .timeline-item::before { left: 45px; }
+    .timeline-item:nth-child(n)::before { left: 40px; border-width: 10px 10px 10px 0; border-color: transparent var(--bg-dark-secondary) transparent transparent; }
+
+    .timeline-item::after { left: 20px; width: 25px; height: 25px; }
+    .timeline-item:nth-child(even)::after { left: 20px }
 
     .starter-pack-image { max-width: 95%; width: 95%; }
     .back-to-top-btn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1rem;}
