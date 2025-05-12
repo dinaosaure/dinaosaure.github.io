@@ -80,11 +80,21 @@ function setupMobileMenu() {
         }
     });
 
-    // Optional: Close menu and remove scroll lock if window resizes to desktop view
-     window.addEventListener('resize', () => {
+    // Optional:
+    // - Close menu and remove scroll lock if window resizes to desktop view
+    // - Prevent unwanted animation if window resizes to mobile view
+    const breakpoint = 768;
+    window.addEventListener('resize', () => {
         // Use the same breakpoint as your CSS media query (768px)
-        if (window.innerWidth > 768 && mainNavUl.classList.contains('active')) {
-             closeMenu();
+        const isNavActive = mainNavUl.classList.contains('active');
+        if (window.innerWidth >= breakpoint && isNavActive) {
+            closeMenu();
+        }
+
+        else if (window.innerWidth <= breakpoint && !isNavActive) {
+            mainNavUl.style.transition = 'none';
+            mainNavUl.offsetWidth; // trigger reflow
+            mainNavUl.style.transition = null;
         }
     });
 }

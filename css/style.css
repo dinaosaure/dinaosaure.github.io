@@ -194,15 +194,29 @@ section {
     align-items: center;
 }
 .hero-profile-pic {
+    position: relative;
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    object-fit: cover;
     border: 5px solid var(--accent-color);
+    background-color: #001130;
     margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 0 25px rgba(52, 152, 219, 0.3);
+    overflow: hidden;
+}
+
+.hero-profile-pic::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("../images/profilepic.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transform: translateY(2px);
 }
 
 .hero-section h1 { font-size: 3.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-headings); }
@@ -308,12 +322,14 @@ section {
 .timeline-item::after { /* Circle marker */
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
-    right: -10px;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -50%);
+    top: 38px; /* ::before top (28px) half height (10px) */
+    right: -30px;
     background-color: var(--bg-dark-primary);
+    box-sizing: border-box;
     border: 4px solid var(--accent-color);
-    top: 25px;
     border-radius: 50%;
     z-index: 1;
 }
@@ -338,7 +354,7 @@ section {
     border-width: 10px 10px 10px 0;
     border-color: transparent var(--bg-dark-secondary) transparent transparent;
 }
-.timeline-item:nth-child(even)::after { left: -10px; }
+.timeline-item:nth-child(even)::after { left: 0; }
 
 .timeline-content {
     padding: 20px 30px;
@@ -689,8 +705,12 @@ button:focus-visible,
 
     .timeline::after { left: 20px; }
     .timeline-item { padding-left: 50px; }
-    .timeline-item::after { left: 10px; width: 15px; height: 15px; }
+
     .timeline-item::before { left: 45px; }
+    .timeline-item:nth-child(n)::before { left: 40px; border-width: 10px 10px 10px 0; border-color: transparent var(--bg-dark-secondary) transparent transparent; }
+
+    .timeline-item::after { left: 20px; width: 25px; height: 25px; }
+    .timeline-item:nth-child(even)::after { left: 20px }
 
     .starter-pack-image { max-width: 95%; width: 95%; }
     .back-to-top-btn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1rem;}
