@@ -671,9 +671,12 @@ button:focus-visible,
     .timeline-item::after { left: 15px; }
     .timeline-item::before { left: 60px; border-width: 10px 10px 10px 0; border-color: transparent var(--bg-dark-secondary) transparent transparent; }
 
-    .contact-links { flex-direction: column; gap: 1.5rem; align-items: center; }
-    .contact-link { width: 80%; max-width: 300px; }
+    contact-link {
+        width: 90%; max-width: 280px; min-width: 120px; padding: 10px 12px; display: inline-flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+    .contact-link i {
+        margin-right: 8px; flex-shrink: 0; }
+    
     .starter-pack-image { max-width: 90%; width: 90%; }
     .experience-logo { width: 60px; height: 60px; }
 
@@ -711,6 +714,11 @@ button:focus-visible,
 
     .timeline-item::after { left: 20px; width: 25px; height: 25px; }
     .timeline-item:nth-child(even)::after { left: 20px }
+
+    .contact-link { width: 90%; max-width: 300px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-flex; align-items: center; }
+
+.contact-link span {
+    display: inline-block; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
     .starter-pack-image { max-width: 95%; width: 95%; }
     .back-to-top-btn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1rem;}
