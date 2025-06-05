@@ -127,18 +127,8 @@ function setupScrollReveal() {
     }, revealObserverOptions);
 
     revealElements.forEach((el, index) => {
-        // Optional: Set default stagger delay if no data-attribute is present
-        // if (!el.dataset.revealDelay) {
-        //     el.style.transitionDelay = `${index * 50}ms`; // Example: 50ms stagger
-        // }
         revealObserver.observe(el);
     });
-
-    /* Example HTML for staggered delay:
-       <div class="timeline-item scroll-reveal" data-reveal-delay="100ms">...</div>
-       <div class="timeline-item scroll-reveal" data-reveal-delay="200ms">...</div>
-       <article class="experience-card scroll-reveal" data-reveal-delay="50ms">...</article>
-    */
 }
 
 /**
@@ -153,8 +143,8 @@ function setupNavHighlighting() {
 
     const navObserverOptions = {
         root: null,
-        rootMargin: '-40% 0px -60% 0px', // Active when section is roughly between 40% from top and 40% from bottom
-        threshold: 0 // Trigger as soon as any part enters/leaves the rootMargin zone
+        rootMargin: '-40% 0px -60% 0px',
+        threshold: 0
     };
 
     let currentActiveSectionId = null;
@@ -176,8 +166,6 @@ function setupNavHighlighting() {
             }
         });
 
-        // Special case: If scrolled near the top, explicitly activate 'Home'/'Accueil'
-        // Adjust the scrollY value (e.g., 200) based on your header/hero height
         if (window.scrollY < 200 && currentActiveSectionId !== 'accueil') {
            navLinks.forEach(link => link.classList.remove('active'));
            const homeLink = document.querySelector('.main-nav a[href="#accueil"]');
@@ -229,8 +217,8 @@ function setupBackToTopButton() {
 
     window.addEventListener('scroll', () => {
         clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(handleScroll, 50); // Adjust timeout (ms) as needed
-    }, { passive: true }); // Improve scroll performance
+        scrollTimeout = setTimeout(handleScroll, 50);
+    }, { passive: true });
 
     // Note: The smooth scroll itself is handled by the href="#accueil"
     // and the CSS `html { scroll-behavior: smooth; }`. No click listener needed here
