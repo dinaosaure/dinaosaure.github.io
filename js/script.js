@@ -1,17 +1,12 @@
-/**
- * Initializes the core functionalities of the website after the DOM is fully loaded.
- */
 function initializeWebsite() {
     updateCopyrightYear();
     setupMobileMenu();
     setupScrollReveal();
     setupNavHighlighting();
     setupBackToTopButton();
+    setupThemeToggle();
 }
 
-/**
- * Updates the copyright year in the footer.
- */
 function updateCopyrightYear() {
     const currentYearSpan = document.getElementById("current-year");
     if (currentYearSpan) {
@@ -19,37 +14,30 @@ function updateCopyrightYear() {
     }
 }
 
-/**
- * Sets up the mobile menu toggle, outside click closure, escape key closure,
- * link click closure, and body scroll lock.
- */
 function setupMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNavUl = document.querySelector('.main-nav ul');
 
-    if (!menuToggle || !mainNavUl) return; // Exit if elements aren't found
+    if (!menuToggle || !mainNavUl) return;
 
     const navLinksForMenuClose = mainNavUl.querySelectorAll('a');
 
-    // Function to close the menu
     const closeMenu = () => {
         if (mainNavUl.classList.contains('active')) {
             mainNavUl.classList.remove('active');
             menuToggle.setAttribute('aria-expanded', 'false');
-            document.body.classList.remove('no-scroll'); // Remove body scroll lock
+            document.body.classList.remove('no-scroll');
         }
     };
 
-    // Function to open the menu
     const openMenu = () => {
         mainNavUl.classList.add('active');
         menuToggle.setAttribute('aria-expanded', 'true');
-        document.body.classList.add('no-scroll'); // Add body scroll lock
+        document.body.classList.add('no-scroll');
     };
 
-    // Toggle menu on button click
     menuToggle.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent click from immediately triggering document listener
+        event.stopPropagation();
         if (mainNavUl.classList.contains('active')) {
             closeMenu();
         } else {
@@ -57,72 +45,56 @@ function setupMobileMenu() {
         }
     });
 
-    // Close menu when a link inside is clicked
     navLinksForMenuClose.forEach(link => {
         link.addEventListener('click', closeMenu);
     });
 
-    // Close menu on outside click
     document.addEventListener('click', (event) => {
-        // Check if the menu is active and the click was outside the menu AND outside the toggle button
         const isClickInsideNav = mainNavUl.contains(event.target);
-        const isClickOnToggle = menuToggle.contains(event.target); // Already handled by its own listener
+        const isClickOnToggle = menuToggle.contains(event.target);
 
         if (mainNavUl.classList.contains('active') && !isClickInsideNav && !isClickOnToggle) {
             closeMenu();
         }
     });
 
-    // Close menu on 'Escape' key press (Accessibility improvement)
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && mainNavUl.classList.contains('active')) {
             closeMenu();
         }
     });
 
-    // Optional:
-    // - Close menu and remove scroll lock if window resizes to desktop view
-    // - Prevent unwanted animation if window resizes to mobile view
     const breakpoint = 768;
     window.addEventListener('resize', () => {
-        // Use the same breakpoint as your CSS media query (768px)
         const isNavActive = mainNavUl.classList.contains('active');
         if (window.innerWidth >= breakpoint && isNavActive) {
             closeMenu();
-        }
-
-        else if (window.innerWidth <= breakpoint && !isNavActive) {
-            mainNavUl.style.transition = 'none';
-            mainNavUl.offsetWidth; // trigger reflow
-            mainNavUl.style.transition = null;
-        }
+        } else if (window.innerWidth <= breakpoint && !isNavActive) {
+             mainNavUl.style.transition = 'none';
+             mainNavUl.offsetWidth;
+             mainNavUl.style.transition = null;
+         }
     });
 }
 
-/**
- * Sets up scroll reveal animations using Intersection Observer.
- * Elements reveal once and stay visible.
- */
 function setupScrollReveal() {
     const revealElements = document.querySelectorAll('.scroll-reveal');
     if (revealElements.length === 0) return;
 
     const revealObserverOptions = {
-        root: null, // viewport
-        threshold: 0.1 // Trigger when 10% is visible
+        root: null,
+        threshold: 0.1
     };
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry, index) => { // Index can be used for staggering if needed
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // Optional: Add staggered delay using data attribute
                 const delay = entry.target.dataset.revealDelay || '0ms';
                 entry.target.style.transitionDelay = delay;
 
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // Reveal only once
+                observer.unobserve(entry.target);
             }
-            // Non-reversible animation: no 'else' block needed
         });
     }, revealObserverOptions);
 
@@ -131,10 +103,6 @@ function setupScrollReveal() {
     });
 }
 
-/**
- * Sets up active navigation link highlighting based on scroll position
- * using Intersection Observer.
- */
 function setupNavHighlighting() {
     const sections = document.querySelectorAll('main section[id]');
     const navLinks = document.querySelectorAll('.main-nav ul li a');
@@ -151,13 +119,11 @@ function setupNavHighlighting() {
 
     const navObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-             // If the section is intersecting the observation zone
              if (entry.isIntersecting) {
                  currentActiveSectionId = entry.target.id;
              }
         });
 
-        // Update nav links based on the last intersecting section ID
         navLinks.forEach(link => {
             link.classList.remove('active');
             const linkHref = link.getAttribute('href');
@@ -171,7 +137,6 @@ function setupNavHighlighting() {
            const homeLink = document.querySelector('.main-nav a[href="#accueil"]');
            if (homeLink) homeLink.classList.add('active');
         } else if (window.scrollY < 200 && currentActiveSectionId === 'accueil') {
-             // Ensure home is active if already at top and 'accueil' is detected
              const homeLink = document.querySelector('.main-nav a[href="#accueil"]');
              if (homeLink && !homeLink.classList.contains('active')) {
                  navLinks.forEach(link => link.classList.remove('active'));
@@ -186,23 +151,16 @@ function setupNavHighlighting() {
     });
 }
 
-
-/**
- * Sets up the Back to Top button visibility toggle based on scroll position
- * and adds accessibility attributes.
- */
 function setupBackToTopButton() {
     const backToTopButton = document.getElementById("back-to-top-btn");
 
     if (!backToTopButton) return;
 
-    // Set initial accessible state
     backToTopButton.setAttribute('aria-hidden', 'true');
 
-    // Debounce function to limit scroll event firing rate (optional but good practice)
     let scrollTimeout;
     const handleScroll = () => {
-         if (window.scrollY > 300) { // Show after 300px scroll
+         if (window.scrollY > 300) {
             if (!backToTopButton.classList.contains('visible')) {
                 backToTopButton.classList.add('visible');
                 backToTopButton.setAttribute('aria-hidden', 'false');
@@ -219,11 +177,54 @@ function setupBackToTopButton() {
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(handleScroll, 50);
     }, { passive: true });
-
-    // Note: The smooth scroll itself is handled by the href="#accueil"
-    // and the CSS `html { scroll-behavior: smooth; }`. No click listener needed here
-    // unless you want to add extra analytics or polyfill behavior.
 }
 
-// === Wait for the HTML document to be fully loaded and parsed ===
+
+function setupThemeToggle() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const htmlElement = document.documentElement;
+    const localStorageKey = 'themePreference';
+
+    if (!themeToggle || !htmlElement) {
+        return;
+    }
+
+    const applyTheme = (theme) => {
+        if (theme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+            themeToggle.setAttribute('aria-label', 'Switch to dark theme');
+        } else {
+            htmlElement.setAttribute('data-theme', 'dark');
+            themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
+            themeToggle.setAttribute('aria-label', 'Switch to light theme');
+        }
+    };
+
+    const getPreferredTheme = () => {
+        const savedTheme = localStorage.getItem(localStorageKey);
+        if (savedTheme) {
+            return savedTheme;
+        }
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    };
+
+    const initialTheme = getPreferredTheme();
+    applyTheme(initialTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+        localStorage.setItem(localStorageKey, newTheme);
+    });
+
+     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (event) => {
+        if (!localStorage.getItem(localStorageKey)) {
+             applyTheme(event.matches ? 'light' : 'dark');
+         }
+     });
+}
+
+
 document.addEventListener('DOMContentLoaded', initializeWebsite);

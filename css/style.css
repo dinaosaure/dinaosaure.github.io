@@ -2,17 +2,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap');
 
 /* --- CSS Variables for Theming --- */
-:root {
+:root { /* Default: Dark Theme (using original names) */
     --bg-dark-primary: #1a1d24;
     --bg-dark-secondary: #2a2f3a;
     --text-light: #e0e0e0;
     --text-medium: #a0a0a0;
     --text-headings: #ffffff;
-    --accent-color: #3498db;
-    --accent-hover: #5dade2;
+    --accent-color: #3498db; /* Original Blue */
+    --accent-hover: #5dade2; /* Original Lighter Blue */
     --border-color: #404552;
+}
+
+html[data-theme="dark"] { /* Explicitly define dark theme vars for clarity */
+    --bg-primary: var(--bg-dark-primary);
+    --bg-secondary: var(--bg-dark-secondary);
+    --text-primary: var(--text-light);
+    --text-secondary: var(--text-medium);
+    --text-heading: var(--text-headings);
+    --theme-accent: var(--accent-color);
+    --theme-accent-hover: var(--accent-hover);
+    --theme-border: var(--border-color);
 
     --font-primary: 'Lato', sans-serif;
+    --font-headings: 'Poppins', sans-serif;
+}
+
+html[data-theme="light"] {
+    --bg-primary: #f4f7f6; /* White-ish background */
+    --bg-secondary: #e9eceb; /* Light grey-ish background */
+    --text-primary: #343a40; /* Dark grey text */
+    --text-secondary: #6c757d; /* Medium grey text */
+    --text-heading: #212529; /* Very dark grey text */
+    --theme-accent: #00aaff; /* A clearer, lighter blue accent */
+    --theme-accent-hover: #0077cc; /* Darker lighter blue on hover */
+    --theme-border: #ced4da; /* Light border */
+
+     --font-primary: 'Lato', sans-serif;
     --font-headings: 'Poppins', sans-serif;
 }
 
@@ -28,11 +53,12 @@ html {
 }
 
 body {
-    font-family: var(--font-primary);
+    font-family: var(--font-primary); /* Used new variable */
     line-height: 1.7;
-    color: var(--text-light);
-    background-color: var(--bg-dark-primary);
+    color: var(--text-primary); /* Used new variable */
+    background-color: var(--bg-primary); /* Used new variable */
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
 }
 
 /* Lock body scroll when mobile menu is open (controlled by JS) */
@@ -56,21 +82,22 @@ img {
 }
 
 a {
-    color: var(--accent-color);
+    color: var(--theme-accent); /* Used new variable */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: var(--accent-hover);
+    color: var(--theme-accent-hover); /* Used new variable */
     text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-headings);
-    color: var(--text-headings);
+    font-family: var(--font-headings); /* Used new variable */
+    color: var(--text-heading); /* Used new variable */
     line-height: 1.3;
     margin-bottom: 1rem;
+    transition: color 0.3s ease; /* Smooth transition for theme change */
 }
 
 h2 { /* Section Titles */
@@ -91,17 +118,20 @@ h2::after {
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background-color: var(--accent-color);
+    background-color: var(--theme-accent); /* Used new variable */
     border-radius: 2px;
+    transition: background-color 0.3s ease; /* Smooth transition for theme change */
 }
 
 p {
     margin-bottom: 1rem;
-    color: var(--text-light);
+    color: var(--text-primary); /* Used new variable */
+    transition: color 0.3s ease; /* Smooth transition for theme change */
 }
 p.details, .link-placeholder, .experience-date, span[style*="color: #6c757d"] {
-    color: var(--text-medium);
+    color: var(--text-secondary); /* Used new variable */
     font-size: 0.9rem;
+    transition: color 0.3s ease; /* Smooth transition for theme change */
 }
 
 ul {
@@ -113,43 +143,60 @@ ul {
 section {
     padding: 80px 0;
     overflow: hidden;
+    transition: background-color 0.3s ease; /* Smooth transition for theme change */
 }
-.dark-section { background-color: var(--bg-dark-secondary); }
-.light-section { background-color: var(--bg-dark-primary); }
+.dark-section { background-color: var(--bg-secondary); } /* Used new variable */
+.light-section { background-color: var(--bg-primary); } /* Used new variable */
 
 /* ----- HEADER / NAVIGATION ----- */
 .site-header {
-    background-color: rgba(26, 29, 36, 0.9);
+    background-color: rgba(26, 29, 36, 0.9); /* Original dark header background */
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
-    transition: background-color 0.3s ease;
+    border-bottom: 1px solid var(--theme-border); /* Used new variable */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for theme change */
+}
+html[data-theme="light"] .site-header {
+     background-color: rgba(244, 247, 246, 0.9); /* Light header background */
 }
 
-.site-header .container { display: flex; justify-content: space-between; align-items: center; }
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
 
 /* Logo Styling (With Emoji) */
 .site-logo {
     font-size: 1.7rem;
     font-weight: 700;
-    color: var(--text-headings);
+    color: var(--text-heading); /* Used new variable */
     letter-spacing: 1px;
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     gap: 0.5em;
+    transition: color 0.3s ease; /* Smooth transition for theme change */
+    flex-grow: 1; /* Allow logo to take space */
 }
-.site-logo:hover { color: var(--text-headings); }
+.site-logo:hover { color: var(--theme-accent); } /* Used new variable */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
 
 .main-nav ul { display: flex; list-style: none; padding: 0; }
 .main-nav ul li { margin-left: 30px; }
 .main-nav ul li a {
-    color: var(--text-light);
+    color: var(--text-primary); /* Used new variable */
     font-weight: 500;
-    font-family: var(--font-headings);
+    font-family: var(--font-headings); /* Used new variable */
     padding-bottom: 5px;
     position: relative;
     transition: color 0.3s ease;
@@ -161,12 +208,12 @@ section {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--accent-color);
-    transition: width 0.3s ease;
+    background-color: var(--theme-accent); /* Used new variable */
+    transition: width 0.3s ease, background-color 0.3s ease; /* Smooth transition for theme change */
 }
 .main-nav ul li a:hover,
 .main-nav ul li a.active {
-     color: var(--accent-color);
+     color: var(--theme-accent); /* Used new variable */
 }
 .main-nav ul li a:hover::after,
 .main-nav ul li a.active::after {
@@ -178,33 +225,58 @@ section {
     font-size: 2rem;
     background: none;
     border: none;
-    color: var(--text-headings);
+    color: var(--text-heading); /* Used new variable */
     cursor: pointer;
+    transition: color 0.3s ease; /* Smooth transition for theme change */
 }
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary); /* Used new variable */
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease; /* Smooth transition for theme change */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px; /* Added margin to separate from logo */
+}
+.theme-toggle:hover {
+    color: var(--theme-accent); /* Used new variable */
+}
+
 
 /* ----- HERO SECTION ----- */
 .hero-section {
     text-align: center;
     padding: 100px 0 80px 0;
-    background: linear-gradient(rgba(26, 29, 36, 0.8), rgba(26, 29, 36, 0.9)), url('../images/profilepic.png') no-repeat center center/cover;
+    background: linear-gradient(rgba(26, 29, 36, 0.8), rgba(26, 29, 36, 0.9)), url('../images/profilepic.png') no-repeat center center/cover; /* Original dark gradient */
     min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+     transition: background 0.3s ease; /* Smooth transition for theme change */
 }
+html[data-theme="light"] .hero-section {
+     background: linear-gradient(rgba(244, 247, 246, 0.8), rgba(244, 247, 246, 0.9)), url('../images/profilepic.png') no-repeat center center/cover; /* Light gradient using light primary background */
+}
+
 .hero-profile-pic {
     position: relative;
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    border: 5px solid var(--accent-color);
-    background-color: #001130;
+    border: 5px solid var(--theme-accent); /* Used new variable */
+    background-color: #001130; /* Kept original background */
     margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0 0 25px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.3); /* Kept original blue shadow */
     overflow: hidden;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for theme change */
 }
 
 .hero-profile-pic::after {
@@ -219,32 +291,32 @@ section {
     transform: translateY(2px);
 }
 
-.hero-section h1 { font-size: 3.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-headings); }
-.hero-section .subtitle { font-size: 1.5rem; font-weight: 500; color: var(--accent-color); margin-bottom: 1.5rem; font-family: var(--font-headings); }
-.hero-section p:not(.subtitle) { font-size: 1.1rem; color: var(--text-light); max-width: 650px; margin-bottom: 2.5rem; }
+.hero-section h1 { font-size: 3.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-heading); } /* Used new variable */
+.hero-section .subtitle { font-size: 1.5rem; font-weight: 500; color: var(--theme-accent); margin-bottom: 1.5rem; font-family: var(--font-headings); } /* Used new variable */
+.hero-section p:not(.subtitle) { font-size: 1.1rem; color: var(--text-primary); max-width: 650px; margin-bottom: 2.5rem; } /* Used new variable */
 
 .cta-button {
     display: inline-block;
-    background-color: var(--accent-color);
+    background-color: var(--theme-accent); /* Used new variable */
     color: #ffffff;
     padding: 14px 35px;
     border-radius: 30px;
     font-weight: 700;
-    font-family: var(--font-headings);
+    font-family: var(--font-headings); /* Used new variable */
     text-transform: uppercase;
     letter-spacing: 1px;
     text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid var(--accent-color);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transition for theme change */
+    border: 2px solid var(--theme-accent); /* Used new variable */
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2); /* Kept original blue shadow */
     cursor: pointer;
 }
 
 .cta-button:hover {
-    background-color: var(--accent-hover);
+    background-color: var(--theme-accent-hover); /* Used new variable */
     color: #ffffff;
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3); /* Kept original blue shadow */
     text-decoration: none;
 }
 
@@ -269,7 +341,7 @@ section {
 }
 .starter-pack-caption {
     font-size: 0.9rem;
-    color: var(--text-medium);
+    color: var(--text-secondary); /* Used new variable */
     margin-top: 1rem;
     font-style: italic;
 }
@@ -278,11 +350,10 @@ section {
 
 /* Base styles for skills/languages boxes */
 .skills-box, .languages-box {
-    background-color: var(--bg-dark-primary);
+    background-color: var(--bg-primary); /* Used new variable */
     padding: 2rem;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
-    /* Ensure box-shadow is included in transition with 0.3s speed */
+    border: 1px solid var(--theme-border); /* Used new variable */
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 0 transparent; /* Start transparent for smooth glow-in */
 }
@@ -290,19 +361,19 @@ section {
 /* Uniform hover effect for skills/languages boxes */
 .skills-box:hover,
 .languages-box:hover {
-    background-color: var(--bg-dark-secondary);
-    border-color: var(--accent-color);
-    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); /* The uniform glow effect */
+    background-color: var(--bg-secondary); /* Used new variable */
+    border-color: var(--theme-accent); /* Used new variable */
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); /* The uniform glow effect - Kept original blue glow */
 }
 
-.skills-box h3, .languages-box h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+.skills-box h3, .languages-box h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--theme-accent); border-bottom: 1px solid var(--theme-border); padding-bottom: 0.5rem; } /* Used new variable */
 .skills-box ul, .languages-box ul { padding-left: 0; margin-bottom: 1rem; }
 .skills-box li, .languages-box li { margin-bottom: 0.5rem; }
-.skills-box p strong { display: block; margin-bottom: 0.8rem; color: var(--text-headings); font-weight: 600; font-family: var(--font-headings); }
+.skills-box p strong { display: block; margin-bottom: 0.8rem; color: var(--text-heading); font-weight: 600; font-family: var(--font-headings); } /* Used new variable */
 
 .skill-bubbles-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.5rem; margin-top: 0.5rem; }
-.skill-bubble { display: inline-block; padding: 8px 18px; border: 2px solid var(--border-color); border-radius: 20px; font-size: 0.9rem; font-weight: 500; color: var(--text-light); background-color: transparent; transition: all 0.3s ease; white-space: nowrap; cursor: pointer; }
-.skill-bubble:hover { color: var(--accent-color); border-color: var(--accent-color); background-color: rgba(52, 152, 219, 0.1); transform: translateY(-2px); text-decoration: none; }
+.skill-bubble { display: inline-block; padding: 8px 18px; border: 2px solid var(--theme-border); border-radius: 20px; font-size: 0.9rem; font-weight: 500; color: var(--text-primary); background-color: transparent; transition: all 0.3s ease; white-space: nowrap; cursor: pointer; } /* Used new variables */
+.skill-bubble:hover { color: var(--theme-accent); border-color: var(--theme-accent); background-color: rgba(52, 152, 219, 0.1); transform: translateY(-2px); text-decoration: none; } /* Used new variables, kept blue rgba */
 
 .cv-buttons-container {
     display: flex;
@@ -326,12 +397,13 @@ section {
     content: '';
     position: absolute;
     width: 3px;
-    background-color: var(--accent-color);
+    background-color: var(--theme-accent); /* Used new variable */
     top: 0;
     bottom: 0;
     left: 50%;
     margin-left: -1.5px;
     opacity: 0.3;
+     transition: background-color 0.3s ease; /* Smooth transition for theme change */
 }
 .timeline-item {
     padding: 10px 40px;
@@ -346,11 +418,12 @@ section {
     transform: translate(-50%, -50%);
     top: 38px; /* ::before top (28px) half height (10px) */
     right: -30px;
-    background-color: var(--bg-dark-primary);
+    background-color: var(--bg-primary); /* Used new variable */
     box-sizing: border-box;
-    border: 4px solid var(--accent-color);
+    border: 4px solid var(--theme-accent); /* Used new variable */
     border-radius: 50%;
     z-index: 1;
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for theme change */
 }
 .timeline-item:nth-child(odd) { left: 0; }
 .timeline-item:nth-child(even) { left: 50%; }
@@ -361,73 +434,71 @@ section {
     top: 28px;
     width: 0;
     z-index: 1;
-    border: medium solid var(--bg-dark-secondary);
+    border: medium solid var(--bg-secondary); /* Used new variable */
+    transition: border-color 0.3s ease; /* Smooth transition for theme change */
 }
 .timeline-item:nth-child(odd)::before {
     right: 30px;
     border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent var(--bg-dark-secondary);
+    border-color: transparent transparent transparent var(--bg-secondary); /* Used new variable */
 }
 .timeline-item:nth-child(even)::before {
     left: 30px;
     border-width: 10px 10px 10px 0;
-    border-color: transparent var(--bg-dark-secondary) transparent transparent;
+    border-color: transparent var(--bg-secondary) transparent transparent; /* Used new variable */
 }
 .timeline-item:nth-child(even)::after { left: 0; }
 
 /* Base styles for timeline content */
 .timeline-content {
     padding: 20px 30px;
-    background-color: var(--bg-dark-secondary);
+    background-color: var(--bg-secondary); /* Used new variable */
     position: relative;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
-    /* Ensure box-shadow is included in transition with 0.3s speed */
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Changed to 0.3s */
+    border: 1px solid var(--theme-border); /* Used new variable */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 0 transparent; /* Start transparent for smooth glow-in */
 }
 
 /* Uniform glow effect when timeline item is visible (on scroll) */
 .timeline-item.is-visible .timeline-content {
-    background-color: var(--bg-dark-primary); /* Lighter background in light section */
-    border-color: var(--accent-color);
-    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); /* GLOW ON SCROLL REVEAL */
+    background-color: var(--bg-primary); /* Lighter background in light section */ /* Used new variable */
+    border-color: var(--theme-accent); /* Used new variable */
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); /* GLOW ON SCROLL REVEAL - Kept original blue glow */
 }
 
 /* Optional: subtle hover effect on timeline content after it's visible */
 .timeline-item.is-visible .timeline-content:hover {
-    border-color: var(--accent-hover); /* Subtle highlight on hover */
-    /* Background and glow are maintained from the .is-visible state */
+    border-color: var(--theme-accent-hover); /* Subtle highlight on hover */ /* Used new variable */
 }
 
 
-.timeline-content h3 { font-size: 1.4rem; color: var(--accent-color); margin-bottom: 0.5rem; }
-.timeline-content p { font-size: 1rem; margin-bottom: 0.5rem; color: var(--text-light); }
-.timeline-content p.details { font-size: 0.9rem; color: var(--text-medium); margin-bottom: 0; }
+.timeline-content h3 { font-size: 1.4rem; color: var(--theme-accent); margin-bottom: 0.5rem; } /* Used new variable */
+.timeline-content p { font-size: 1rem; margin-bottom: 0.5rem; color: var(--text-primary); } /* Used new variable */
+.timeline-content p.details { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0; } /* Used new variable */
 
 /* ----- EXPERIENCE SECTION ----- */
 .experience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 
 /* Base styles for experience card */
 .experience-card {
-    background-color: var(--bg-dark-primary);
+    background-color: var(--bg-primary); /* Used new variable */
     padding: 2rem;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--theme-border); /* Used new variable */
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Ensure box-shadow and transform are included in transition with 0.3s speed */
-    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Ensure 0.3s for box-shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 0 transparent; /* Start transparent */
 }
 
 /* Uniform hover effect for experience card */
 .experience-card:hover {
-    background-color: var(--bg-dark-secondary); /* Darker background in dark section */
-    border-color: var(--accent-color);
-    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); /* GLOW ON HOVER */
+    background-color: var(--bg-secondary); /* Darker background in dark section */ /* Used new variable */
+    border-color: var(--theme-accent); /* Used new variable */
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); /* GLOW ON HOVER - Kept original blue glow */
     transform: translateY(-5px); /* Keep existing transform */
 }
 
@@ -443,15 +514,15 @@ section {
     object-fit: cover;
     margin-bottom: 1.5rem;
     filter: grayscale(50%) contrast(120%);
-    transition: filter 0.3s ease;
-    background-color: var(--bg-dark-secondary);
+    transition: filter 0.3s ease, background-color 0.3s ease; /* Smooth transition for theme change */
+    background-color: var(--bg-secondary); /* Used new variable */
 }
-.experience-card h3 { font-size: 1.3rem; color: var(--accent-color); margin-bottom: 0.8rem; }
-.experience-card p { font-size: 0.95rem; color: var(--text-light); flex-grow: 1; }
-.experience-date { font-size: 0.85rem; font-weight: bold; color: var(--text-medium); margin-top: 1rem; }
+.experience-card h3 { font-size: 1.3rem; color: var(--theme-accent); margin-bottom: 0.8rem; } /* Used new variable */
+.experience-card p { font-size: 0.95rem; color: var(--text-primary); flex-grow: 1; } /* Used new variable */
+.experience-date { font-size: 0.85rem; font-weight: bold; color: var(--text-secondary); margin-top: 1rem; } /* Used new variable */
 
-.interests-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); text-align: center; }
-.interests-section h3 { color: var(--accent-color); margin-bottom: 1rem; }
+.interests-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--theme-border); text-align: center; transition: border-color 0.3s ease; /* Smooth transition for theme change */ } /* Used new variable */
+.interests-section h3 { color: var(--theme-accent); margin-bottom: 1rem; } /* Used new variable */
 .interests-section p { max-width: 700px; margin-left: auto; margin-right: auto; }
 
 /* ----- PROJECTS SECTION ----- */
@@ -459,12 +530,11 @@ section {
 
 /* Base styles for project card */
 .project-card {
-    background-color: var(--bg-dark-secondary);
-    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary); /* Used new variable */
+    border: 1px solid var(--theme-border); /* Used new variable */
     border-radius: 8px;
     overflow: hidden;
-    /* Ensure transform and box-shadow are included in transition with 0.3s speed */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Ensure 0.3s for box-shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
     box-shadow: 0 0 0 transparent; /* Start transparent for smooth glow-in */
     display: flex;
     flex-direction: column;
@@ -472,9 +542,9 @@ section {
 
 /* Uniform hover effect for project card */
 .project-card:hover {
-    background-color: var(--bg-dark-secondary); /* Keep same background on hover */
-    border-color: var(--accent-color);
-    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); /* GLOW ON HOVER (replaces old shadow) */
+    background-color: var(--bg-secondary); /* Keep same background on hover */ /* Used new variable */
+    border-color: var(--theme-accent); /* Used new variable */
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); /* GLOW ON HOVER (replaces old shadow) - Kept original blue glow */
     transform: translateY(-8px); /* Keep existing transform */
 }
 
@@ -488,24 +558,24 @@ section {
     filter: grayscale(30%);
     transition: filter 0.3s ease;
 }
-.project-card h3 { font-size: 1.4rem; color: var(--text-headings); margin: 1.5rem 1.5rem 0.5rem 1.5rem; }
-.project-card p { margin: 0 1.5rem 1rem 1.5rem; font-size: 0.95rem; color: var(--text-light); flex-grow: 1; }
-.project-links { margin: 1rem 1.5rem 1.5rem 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); }
+.project-card h3 { font-size: 1.4rem; color: var(--text-heading); margin: 1.5rem 1.5rem 0.5rem 1.5rem; } /* Used new variable */
+.project-card p { margin: 0 1.5rem 1rem 1.5rem; font-size: 0.95rem; color: var(--text-primary); flex-grow: 1; } /* Used new variable */
+.project-links { margin: 1rem 1.5rem 1.5rem 1.5rem; padding-top: 1rem; border-top: 1px solid var(--theme-border); transition: border-color 0.3s ease; /* Smooth transition for theme change */ } /* Used new variable */
 .project-links a, .link-placeholder { margin-right: 15px; font-weight: 500; font-size: 0.9rem; }
 
 .image-attribution {
     display: block;
     margin-top: 10px;
     font-size: 0.8rem;
-    color: var(--text-medium);
+    color: var(--text-secondary); /* Used new variable */
     text-align: left;
 }
-.image-attribution a { color: var(--text-medium); text-decoration: underline; transition: color 0.3s ease; }
-.image-attribution a:hover { color: var(--text-light); }
+.image-attribution a { color: var(--text-secondary); text-decoration: underline; transition: color 0.3s ease; } /* Used new variable */
+.image-attribution a:hover { color: var(--text-primary); } /* Used new variable */
 
 .see-all-button { display: block; width: fit-content; margin: 4rem auto 0 auto; text-align: center; }
 
-.coming-soon-message { text-align: center; margin-top: 4rem; margin-bottom: 2rem; color: var(--text-medium); font-style: italic; font-size: 1.1rem; }
+.coming-soon-message { text-align: center; margin-top: 4rem; margin-bottom: 2rem; color: var(--text-secondary); font-style: italic; font-size: 1.1rem; } /* Used new variable */
 
 /* ----- CONTACT SECTION ----- */
 .contact-section { text-align: center; }
@@ -516,39 +586,43 @@ section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-light);
+    color: var(--text-primary); /* Used new variable */
     font-size: 1.1rem;
     font-weight: 500;
     padding: 12px 25px;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--theme-border); /* Used new variable */
     border-radius: 30px;
     transition: all 0.3s ease;
     min-width: 150px;
     text-align: center;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.contact-link i { margin-right: 10px; font-size: 1.2em; line-height: 1; }
-.contact-link:hover { color: var(--accent-color); border-color: var(--accent-color); background-color: rgba(52, 152, 219, 0.1); transform: translateY(-2px); }
+.contact-link i { margin-right: 10px; font-size: 1.2em; line-height: 1; flex-shrink: 0; }
+.contact-link:hover { color: var(--theme-accent); border-color: var(--theme-accent); background-color: rgba(52, 152, 219, 0.1); transform: translateY(-2px); } /* Used new variables, kept blue rgba */
 
 /* ----- FOOTER ----- */
 .site-footer {
-    background-color: var(--bg-dark-primary);
-    color: var(--text-medium);
+    background-color: var(--bg-primary); /* Used new variable */
+    color: var(--text-secondary); /* Used new variable */
     text-align: center;
     padding: 2.5rem 0;
     margin-top: 60px;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--theme-border); /* Used new variable */
     font-size: 0.9rem;
     position: relative;
     overflow: hidden;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
 }
 .site-footer .container {
      position: relative;
 }
 
-.site-footer p { margin-bottom: 0.5rem; color: var(--text-medium); }
-.site-footer a { color: var(--text-light); }
-.site-footer a:hover { color: var(--accent-color); }
+.site-footer p { margin-bottom: 0.5rem; color: var(--text-secondary); } /* Used new variable */
+.site-footer a { color: var(--text-primary); transition: color 0.3s ease; /* Smooth transition for theme change */ } /* Used new variable */
+.site-footer a:hover { color: var(--theme-accent); } /* Used new variable */
 
 /* Peeking Dino Footer Style */
 .footer-dino {
@@ -572,7 +646,7 @@ section {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background-color: var(--accent-color);
+    background-color: var(--theme-accent); /* Used new variable */
     color: #ffffff;
     width: 45px;
     height: 45px;
@@ -586,7 +660,7 @@ section {
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     z-index: 999;
     cursor: pointer;
 }
@@ -598,7 +672,7 @@ section {
 }
 
 .back-to-top-btn:hover {
-    background-color: var(--accent-hover);
+    background-color: var(--theme-accent-hover); /* Used new variable */
     color: #ffffff;
     transform: translateY(-3px);
 }
@@ -626,14 +700,15 @@ button:focus-visible,
 .download-cv-button:focus-visible,
 .contact-link:focus-visible,
 .back-to-top-btn:focus-visible,
-.project-links a:focus-visible {
-    outline: 2px solid var(--accent-hover);
+.project-links a:focus-visible,
+.theme-toggle:focus-visible { /* Added theme-toggle */
+    outline: 2px solid var(--theme-accent-hover); /* Used new variable */
     outline-offset: 2px;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4); /* Kept original blue rgba */
 }
 
 .main-nav ul li a:focus-visible {
-    color: var(--accent-color);
+    color: var(--theme-accent); /* Used new variable */
     box-shadow: none;
     outline: none;
 }
@@ -642,25 +717,25 @@ button:focus-visible,
 }
 
 .skill-bubble:focus-visible {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--theme-accent); /* Used new variable */
+    border-color: var(--theme-accent); /* Used new variable */
+    background-color: rgba(52, 152, 219, 0.1); /* Kept original blue rgba */
 }
 
 .cta-button:focus-visible,
 .download-cv-button:focus-visible {
-    background-color: var(--accent-hover);
+    background-color: var(--theme-accent-hover); /* Used new variable */
     color: #ffffff;
 }
 
 .contact-link:focus-visible {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--theme-accent); /* Used new variable */
+    border-color: var(--theme-accent); /* Used new variable */
+    background-color: rgba(52, 152, 219, 0.1); /* Kept original blue rgba */
 }
 
 .back-to-top-btn:focus-visible {
-    background-color: var(--accent-hover);
+    background-color: var(--theme-accent-hover); /* Used new variable */
     color: #ffffff;
 }
 
@@ -668,8 +743,8 @@ button:focus-visible,
 .experience-card:focus-within,
 .project-card:focus-within,
 .timeline-content:focus-within {
-     border-color: var(--accent-hover);
-     box-shadow: 0 8px 20px rgba(52, 152, 219, 0.15);
+     border-color: var(--theme-accent-hover); /* Used new variable */
+     box-shadow: 0 8px 20px rgba(52, 152, 219, 0.15); /* Kept original blue rgba */
 }
 
 
@@ -689,8 +764,26 @@ button:focus-visible,
 
     .menu-toggle { display: block; }
 
-    .main-nav ul {
-        display: flex;
+    .site-header .container {
+         flex-wrap: wrap; /* Allow items to wrap to next line */
+         justify-content: space-between; /* Distribute items */
+         align-items: flex-start; /* Align items to the top */
+         gap: 0; /* Remove gap here, spacing done on items */
+    }
+    .theme-toggle {
+        order: 1; /* Put toggle first */
+        margin-right: 15px; /* Space between toggle and logo */
+    }
+    .site-logo {
+        order: 2; /* Put logo second */
+        flex-grow: 1; /* Allow logo to take remaining space on its line */
+        margin-right: 15px; /* Space between logo and menu toggle */
+    }
+     .main-nav {
+         order: 3; /* Put nav third */
+         flex-basis: 100%; /* Make nav take full width on its own line */
+     }
+     .main-nav ul {
         flex-direction: column;
         opacity: 0;
         visibility: hidden;
@@ -698,33 +791,37 @@ button:focus-visible,
         transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         width: 100%;
         position: absolute;
-        top: 75px;
+        top: 65px; /* Position below the logo/toggle line */
         left: 0;
-        background-color: var(--bg-dark-secondary);
+        background-color: var(--bg-secondary); /* Used new variable */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         padding: 1rem 0;
-        border-top: 1px solid var(--border-color);
+        border-top: 1px solid var(--theme-border); /* Used new variable */
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for theme change */
     }
+
     .main-nav ul.active {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
+        position: static; /* Change positioning when active */
     }
 
     .main-nav ul li { margin: 0; text-align: center; }
-    .main-nav ul li a { display: block; padding: 1rem 0; border-bottom: 1px solid var(--border-color); width: 100%; }
+    .main-nav ul li a { display: block; padding: 1rem 0; border-bottom: 1px solid var(--theme-border); width: 100%; transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for theme change */ } /* Used new variable */
     .main-nav ul li:last-child a { border-bottom: none; }
     .main-nav ul li a:focus-visible { /* Mobile nav focus */
-        background-color: rgba(52, 152, 219, 0.1);
-        color: var(--accent-hover);
+        background-color: rgba(52, 152, 219, 0.1); /* Kept original blue rgba */
+        color: var(--theme-accent-hover); /* Used new variable */
         outline: none;
         box-shadow: none;
     }
 
+
     .timeline::after { left: 31px; }
     .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; left: 0 !important; }
     .timeline-item::after { left: 15px; }
-    .timeline-item::before { left: 60px; border-width: 10px 10px 10px 0; border-color: transparent var(--bg-dark-secondary) transparent transparent; }
+    .timeline-item::before { left: 60px; border-width: 10px 10px 10px 0; border-color: transparent var(--bg-secondary) transparent transparent; } /* Used new variable */
 
     contact-link {
         width: 90%; max-width: 280px; min-width: 120px; padding: 10px 12px; display: inline-flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -765,7 +862,7 @@ button:focus-visible,
     .timeline-item { padding-left: 50px; }
 
     .timeline-item::before { left: 45px; }
-    .timeline-item:nth-child(n)::before { left: 40px; border-width: 10px 10px 10px 0; border-color: transparent var(--bg-dark-secondary) transparent transparent; }
+    .timeline-item:nth-child(n)::before { left: 40px; border-width: 10px 10px 10px 0; border-color: transparent var(--bg-secondary) transparent transparent; } /* Used new variable */
 
     .timeline-item::after { left: 20px; width: 25px; height: 25px; }
     .timeline-item:nth-child(even)::after { left: 20px }
