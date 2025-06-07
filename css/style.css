@@ -504,6 +504,18 @@ html[data-theme="light"] .hero-section {
 .stat-box { background-color: var(--bg-secondary); border: 1px solid var(--theme-border); border-radius: 8px; padding: 2rem; text-align: center; transition: all 0.3s ease; }
 .stat-box:hover { transform: translateY(-5px); border-color: var(--theme-accent); box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); }
 .stat-box h3 { font-size: 1.2rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600; }
+h2 i {
+  margin-right: 12px;
+  color: var(--theme-accent);
+  font-size: 1.3em;
+  vertical-align: middle;
+}
+.stat-box h3 i {
+  margin-right: 8px;
+  color: var(--theme-accent);
+  font-size: 1.1em;
+  vertical-align: middle;
+}
 .stat-box .counter { font-size: 3rem; font-weight: 700; color: var(--theme-accent); display: block; }
 .stat-box .stats-img { width: 100%; height: auto; display: block; }
 .stats-visual-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 80%; margin-left: auto; margin-right: auto; }

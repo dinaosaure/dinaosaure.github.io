@@ -169,7 +169,7 @@ function updateStatsCardsTheme() {
 
     if (statsCard) statsCard.src = `${baseURL}?username=${user}&show_icons=true${commonParams}`;
     if (langsCard) langsCard.src = `${baseURL}/top-langs/?username=${user}&layout=compact&langs_count=6${commonParams}`;
-    if (wakatimeCard) wakatimeCard.src = `${baseURL}/wakatime?username=${user}${commonParams}`;
+    if (wakatimeCard) wakatimeCard.src = `${baseURL}/wakatime?username=${user}&range=all_time${commonParams}`;
 }
 
 /* Fetches GitHub stats and sets up the counter animations. */
