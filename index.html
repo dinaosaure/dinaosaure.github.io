@@ -84,7 +84,7 @@
 
                 <!-- --- STARTER PACK --- -->
                 <div class="starter-pack-container scroll-reveal">
-                    <img src="images/StarterPack.png" alt="My Starter Pack" class="starter-pack-image">
+                    <img src="images/StarterPack.png" alt="My Starter Pack" class="starter-pack-image" loading="lazy">
                 </div>
                 <!-- -------------------------------------- -->
 
@@ -196,25 +196,25 @@
                 <h2>Experience & Volunteering</h2>
                  <div class="experience-grid">
                      <article class="experience-card scroll-reveal">
-                         <img src="images/logos/Prologin_cube.png" alt="Prologin (cube) Logo" class="experience-logo">
+                         <img src="images/logos/Prologin_cube.png" alt="Prologin (cube) Logo" class="experience-logo" loading="lazy">
                         <h3>Volunteer - Association Prologin</h3>
                         <p>Introduced computer science concepts through school workshops and "Girls Can Code!" stages.</p>
                          <span class="experience-date">Ongoing</span>
                     </article>
                      <article class="experience-card scroll-reveal">
-                         <img src="images/logos/Optique des princes Logo.avif" alt="Optique des Princes Logo" class="experience-logo">
+                         <img src="images/logos/Optique des princes Logo.avif" alt="Optique des Princes Logo" class="experience-logo" loading="lazy">
                         <h3>Summer Internship - Optique des Princes</h3>
                         <p>Explored the optics world and practiced customer relations in a retail environment (Paris).</p>
                          <span class="experience-date">August 2024</span>
                     </article>
                      <article class="experience-card scroll-reveal">
-                         <img src="images/logos/cmr.png" alt="Centre Medical Réaumur" class="experience-logo">
+                         <img src="images/logos/cmr.png" alt="Centre Medical Réaumur" class="experience-logo" loading="lazy">
                         <h3>Observation Internship (3ème) - Réaumur Medical Center</h3>
                         <p>Observed various health professions within a medical center setting (Paris).</p>
                          <span class="experience-date">December 2019</span>
                     </article>
                     <article class="experience-card scroll-reveal">
-                        <img src="images/logos/UNICEF Logo.png" alt="UNICEF Official Logo" class="experience-logo">
+                        <img src="images/logos/UNICEF Logo.png" alt="UNICEF Official Logo" class="experience-logo" loading="lazy">
                         <h3>Young Ambassador - UNICEF</h3>
                         <p>Assisted with fundraising efforts for Ukraine relief. Participated as a volunteer in various events (Paris Marathon, UNICEF 75th anniversary).</p>
                         <span class="experience-date">2019 - 2022</span>
@@ -233,17 +233,24 @@
                 <h2>Featured Projects</h2>
                 <div class="project-grid">
                     <article class="project-card scroll-reveal">
-                        <img src="images/projets/DevsPreview.png" alt="Devs Game Preview">
+                        <img src="images/projets/DevsPreview.png" alt="Devs Game Preview" loading="lazy">
                         <h3>Video Game "Devs" (EPITA Project)</h3>
                         <p>Project lead for the creation of a rogue-like game named "Devs" during the 1st year programming curriculum.</p>
-                         <div class="project-links">
+                        <div class="project-tags">
+                            <span class="tag">C#</span>
+                            <span class="tag">Godot</span>
+                        </div>
+                        <div class="project-links">
                            <a href="https://github.com/CelinaMeiLin/SUPERDEVS" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
-                         </div>
+                        </div>
                     </article>
                     <article class="project-card scroll-reveal">
-                        <img src="images/projets/afit-project-image.jpg" alt="AFIT Project Abstract Image">
+                        <img src="images/projets/afit-project-image.jpg" alt="AFIT Project Abstract Image" loading="lazy">
                        <h3>AFIT (EPITA Project)</h3>
                        <p>Transcription of advanced arithmetic algorithms into the OCaml language. (2023-2024)</p>
+                       <div class="project-tags">
+                            <span class="tag">OCaml</span>
+                       </div>
                        <div class="project-links">
                           <span class="link-placeholder">Source code not available</span>
                           <span class="image-attribution">
@@ -252,10 +259,14 @@
                        </div>
                    </article>
                     <article class="project-card scroll-reveal">
-                        <img src="images/projets/OCR.png" alt="S3 Project Preview">
+                        <img src="images/projets/OCR.png" alt="S3 Project Preview" loading="lazy">
                          <h3>S3 Project - "Hidden Palace"</h3>
                         <p>Project lead for implementing a word search solver in C, responsible for neural network development.</p>
-                         <div class="project-links">
+                        <div class="project-tags">
+                            <span class="tag">C</span>
+                            <span class="tag">Neural Network</span>
+                        </div>
+                        <div class="project-links">
                             <a href="https://github.com/dinaosaure/HiddenPalace" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
                         </div>
                     </article>
@@ -264,8 +275,8 @@
             </div>
         </section>
 
-        <!-- LA CORRECTION EST ICI -->
-        <section id="stats" class="dark-section"> <!-- DOIT ÊTRE DARK-SECTION -->
+        <!-- Stats Section -->
+        <section id="stats" class="dark-section">
             <div class="container">
                 <h2>📊 Stats & KPIs</h2>
                 <div class="stats-grid scroll-reveal">
@@ -282,25 +293,25 @@
                 <div class="stats-visual-grid scroll-reveal" style="margin-top: 3rem;">
                     <div class="stat-box">
                         <h3>GitHub Activity</h3>
-                        <img class="stats-img" id="github-stats-card" src="" alt="GitHub Stats">
+                        <img class="stats-img" id="github-stats-card" src="" alt="GitHub Stats" loading="lazy">
                     </div>
                     <div class="stat-box">
                         <h3>Most Used Languages</h3>
-                        <img class="stats-img" id="top-langs-card" src="" alt="Top Languages">
+                        <img class="stats-img" id="top-langs-card" src="" alt="Top Languages" loading="lazy">
                     </div>
                 </div>
 
                 <div class="wakatime-grid scroll-reveal" style="margin-top: 2rem;">
                      <div class="stat-box">
                         <h3>WakaTime</h3>
-                        <img class="stats-img" id="wakatime-card" src="" alt="WakaTime Stats">
+                        <img class="stats-img" id="wakatime-card" src="" alt="WakaTime Stats" loading="lazy">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ET LA CORRECTION EST AUSSI ICI -->
-        <section id="contact" class="contact-section light-section"> <!-- DOIT ÊTRE LIGHT-SECTION -->
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section light-section">
             <div class="container">
                 <h2>Get In Touch</h2>
                 <p>Interested in my profile, have a question, or want to discuss opportunities? Feel free to reach out!</p>
@@ -308,19 +319,19 @@
                     <li>
                         <a href="mailto:dina.didouche@epita.fr" class="contact-link email">
                             <i class="fas fa-envelope"></i>
-                            dina.didouche@epita.fr
+                            <span>dina.didouche@epita.fr</span>
                         </a>
                     </li>
                     <li>
                         <a href="https://www.linkedin.com/in/dina-didouche" target="_blank" rel="noopener noreferrer" class="contact-link linkedin">
                             <i class="fab fa-linkedin"></i>
-                            LinkedIn
+                            <span>LinkedIn</span>
                         </a>
                     </li>
                     <li>
                         <a href="https://github.com/dinaosaure" target="_blank" rel="noopener noreferrer" class="contact-link github">
                             <i class="fab fa-github"></i>
-                            GitHub
+                            <span>GitHub</span>
                         </a>
                     </li>
                 </ul>
@@ -334,7 +345,7 @@
         <div class="container">
             <p>© <span id="current-year"></span> Dina DIDOUCHE. All rights reserved.</p>
             <p><a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a></p>
-            <img src="images/dinos/peeking-dino.svg" alt="" class="footer-dino">
+            <img src="images/dinos/peeking-dino.svg" alt="A friendly dinosaur peeking from the bottom of the page" class="footer-dino" loading="lazy">
         </div>
     </footer>
 
