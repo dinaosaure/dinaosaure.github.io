@@ -1,10 +1,126 @@
+// ========== Dina's Website Script.js ========== //
+
 function initializeWebsite() {
     updateCopyrightYear();
     setupMobileMenu();
     setupScrollReveal();
     setupNavHighlighting();
     setupBackToTopButton();
-    setupThemeToggle();
+    setupThemeToggle(); // Cette fonction va maintenant aussi gérer les thèmes des cartes
+    setupGitHubStats();
+    updateStatsCardsTheme(); // On l'appelle une fois au début pour le thème initial
+}
+
+/**
+ * Met à jour les images de statistiques pour correspondre au thème actuel du site (clair/sombre).
+ */
+function updateStatsCardsTheme() {
+    const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const user = 'dinaosaure';
+    
+    // On définit les couleurs pour chaque thème
+    const colors = {
+        dark: {
+            title_color: '3498db', // Bleu accent
+            icon_color: '3498db',  // Bleu accent
+            text_color: 'e0e0e0',    // Texte clair
+            bg_color: '2a2f3a',    // Fond secondaire foncé
+            border_color: '404552', // Bordure foncée
+        },
+        light: {
+            title_color: '0077cc', // Bleu accent plus foncé sur fond clair
+            icon_color: '0077cc',  // Bleu accent plus foncé sur fond clair
+            text_color: '343a40',    // Texte sombre
+            bg_color: 'e9eceb',    // Fond secondaire clair
+            border_color: 'ced4da', // Bordure claire
+        }
+    };
+
+    const currentColors = colors[theme];
+
+    // On récupère les éléments image par leur ID
+    const statsCard = document.getElementById('github-stats-card');
+    const langsCard = document.getElementById('top-langs-card');
+    const wakatimeCard = document.getElementById('wakatime-card');
+
+    if (statsCard) {
+        statsCard.src = `https://github-readme-stats.vercel.app/api?username=${user}&show_icons=true&title_color=${currentColors.title_color}&icon_color=${currentColors.icon_color}&text_color=${currentColors.text_color}&bg_color=${currentColors.bg_color}&border_color=${currentColors.border_color}&hide_border=false`;
+    }
+    if (langsCard) {
+        langsCard.src = `https://github-readme-stats.vercel.app/api/top-langs/?username=${user}&layout=compact&langs_count=6&title_color=${currentColors.title_color}&icon_color=${currentColors.icon_color}&text_color=${currentColors.text_color}&bg_color=${currentColors.bg_color}&border_color=${currentColors.border_color}&hide_border=false`;
+    }
+    if (wakatimeCard) {
+        wakatimeCard.src = `https://github-readme-stats.vercel.app/api/wakatime?username=${user}&title_color=${currentColors.title_color}&icon_color=${currentColors.icon_color}&text_color=${currentColors.text_color}&bg_color=${currentColors.bg_color}&border_color=${currentColors.border_color}&hide_border=false`;
+    }
+}
+
+
+function setupGitHubStats() {
+    const counters = document.querySelectorAll('.counter');
+    if (counters.length === 0) return;
+
+    const user = 'dinaosaure';
+    const repoCountEl = document.getElementById('repoCount');
+    const commitCountEl = document.getElementById('commitCount');
+
+    // On ne cherche plus langCountEl
+    if (!repoCountEl || !commitCountEl) return;
+
+    const animateCounter = (el) => {
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        if (isNaN(target) || el.hasAttribute('data-animated')) return;
+
+        el.setAttribute('data-animated', 'true');
+        let current = 0;
+        const duration = 1500;
+        const steps = 60;
+        const stepTime = Math.max(16, duration / steps);
+        const increment = target / (duration / stepTime);
+
+        const update = () => {
+            if (current < target) {
+                current = Math.min(target, current + increment);
+                el.innerText = Math.floor(current);
+                requestAnimationFrame(update);
+            } else {
+                el.innerText = target;
+            }
+        };
+        requestAnimationFrame(update);
+    };
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    // La requête pour la liste des repos a été enlevée, car elle n'était que pour langCount
+    Promise.all([
+        fetch(`https://api.github.com/users/${user}`),
+        fetch(`https://api.github.com/search/commits?q=author:${user}`, {
+            headers: { 'Accept': 'application/vnd.github.cloak-preview' }
+        })
+    ]).then(responses => Promise.all(responses.map(res => {
+            if (!res.ok) throw new Error(`Erreur API GitHub: ${res.status}`);
+            return res.json();
+        })))
+      .then(([userData, commitsData]) => {
+        if (userData && userData.public_repos) {
+            repoCountEl.setAttribute('data-target', userData.public_repos);
+        }
+        if (commitsData && commitsData.total_count) {
+            commitCountEl.setAttribute('data-target', Math.min(commitsData.total_count, 9999));
+        }
+        counters.forEach(counter => observer.observe(counter));
+    }).catch(error => {
+        console.error("Erreur lors de la récupération des stats GitHub:", error);
+        repoCountEl.innerText = '-';
+        commitCountEl.innerText = '-';
+    });
 }
 
 function updateCopyrightYear() {
@@ -17,17 +133,12 @@ function updateCopyrightYear() {
 function setupMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNavUl = document.querySelector('.main-nav ul');
-
     if (!menuToggle || !mainNavUl) return;
 
-    const navLinksForMenuClose = mainNavUl.querySelectorAll('a');
-
     const closeMenu = () => {
-        if (mainNavUl.classList.contains('active')) {
-            mainNavUl.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            document.body.classList.remove('no-scroll');
-        }
+        mainNavUl.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('no-scroll');
     };
 
     const openMenu = () => {
@@ -45,35 +156,20 @@ function setupMobileMenu() {
         }
     });
 
-    navLinksForMenuClose.forEach(link => {
+    mainNavUl.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', closeMenu);
     });
 
     document.addEventListener('click', (event) => {
-        const isClickInsideNav = mainNavUl.contains(event.target);
-        const isClickOnToggle = menuToggle.contains(event.target);
-
-        if (mainNavUl.classList.contains('active') && !isClickInsideNav && !isClickOnToggle) {
+        if (!mainNavUl.contains(event.target) && !menuToggle.contains(event.target)) {
             closeMenu();
         }
     });
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && mainNavUl.classList.contains('active')) {
+        if (event.key === 'Escape') {
             closeMenu();
         }
-    });
-
-    const breakpoint = 768;
-    window.addEventListener('resize', () => {
-        const isNavActive = mainNavUl.classList.contains('active');
-        if (window.innerWidth >= breakpoint && isNavActive) {
-            closeMenu();
-        } else if (window.innerWidth <= breakpoint && !isNavActive) {
-             mainNavUl.style.transition = 'none';
-             mainNavUl.offsetWidth;
-             mainNavUl.style.transition = null;
-         }
     });
 }
 
@@ -81,26 +177,19 @@ function setupScrollReveal() {
     const revealElements = document.querySelectorAll('.scroll-reveal');
     if (revealElements.length === 0) return;
 
-    const revealObserverOptions = {
-        root: null,
-        threshold: 0.1
-    };
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry, index) => {
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const delay = entry.target.dataset.revealDelay || '0ms';
-                entry.target.style.transitionDelay = delay;
-
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
+                obs.unobserve(entry.target);
             }
         });
-    }, revealObserverOptions);
-
-    revealElements.forEach((el, index) => {
-        revealObserver.observe(el);
+    }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
     });
+
+    revealElements.forEach(el => observer.observe(el));
 }
 
 function setupNavHighlighting() {
@@ -109,122 +198,75 @@ function setupNavHighlighting() {
 
     if (sections.length === 0 || navLinks.length === 0) return;
 
-    const navObserverOptions = {
-        root: null,
-        rootMargin: '-40% 0px -60% 0px',
-        threshold: 0
-    };
-
-    let currentActiveSectionId = null;
-
-    const navObserver = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
+        let currentSectionId = '';
         entries.forEach(entry => {
-             if (entry.isIntersecting) {
-                 currentActiveSectionId = entry.target.id;
-             }
+            if (entry.isIntersecting) {
+                currentSectionId = entry.target.id;
+            }
         });
+
+        const scrollPosition = window.scrollY + window.innerHeight;
+        const documentHeight = document.body.offsetHeight;
+        if (scrollPosition >= documentHeight - 100) {
+             const lastSection = sections[sections.length - 1];
+             if(lastSection) currentSectionId = lastSection.id;
+        }
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            const linkHref = link.getAttribute('href');
-            if (linkHref === `#${currentActiveSectionId}`) {
+            if (link.getAttribute('href') === `#${currentSectionId}`) {
                 link.classList.add('active');
             }
         });
-
-        if (window.scrollY < 200 && currentActiveSectionId !== 'accueil') {
-           navLinks.forEach(link => link.classList.remove('active'));
-           const homeLink = document.querySelector('.main-nav a[href="#accueil"]');
-           if (homeLink) homeLink.classList.add('active');
-        } else if (window.scrollY < 200 && currentActiveSectionId === 'accueil') {
-             const homeLink = document.querySelector('.main-nav a[href="#accueil"]');
-             if (homeLink && !homeLink.classList.contains('active')) {
-                 navLinks.forEach(link => link.classList.remove('active'));
-                 homeLink.classList.add('active');
-             }
-        }
-
-    }, navObserverOptions);
-
-    sections.forEach(section => {
-        navObserver.observe(section);
+    }, {
+        rootMargin: '-40% 0px -60% 0px'
     });
+
+    sections.forEach(section => observer.observe(section));
 }
 
 function setupBackToTopButton() {
-    const backToTopButton = document.getElementById("back-to-top-btn");
-
-    if (!backToTopButton) return;
-
-    backToTopButton.setAttribute('aria-hidden', 'true');
-
-    let scrollTimeout;
-    const handleScroll = () => {
-         if (window.scrollY > 300) {
-            if (!backToTopButton.classList.contains('visible')) {
-                backToTopButton.classList.add('visible');
-                backToTopButton.setAttribute('aria-hidden', 'false');
-            }
-        } else {
-             if (backToTopButton.classList.contains('visible')) {
-                backToTopButton.classList.remove('visible');
-                backToTopButton.setAttribute('aria-hidden', 'true');
-            }
-        }
-    };
-
+    const button = document.getElementById("back-to-top-btn");
+    if (!button) return;
     window.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(handleScroll, 50);
-    }, { passive: true });
+        if (window.scrollY > 300) {
+            button.classList.add('visible');
+        } else {
+            button.classList.remove('visible');
+        }
+    });
 }
-
 
 function setupThemeToggle() {
     const themeToggle = document.querySelector('.theme-toggle');
-    const htmlElement = document.documentElement;
+    const html = document.documentElement;
     const localStorageKey = 'themePreference';
 
-    if (!themeToggle || !htmlElement) {
-        return;
+    if (!themeToggle) return;
+
+    function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'light') {
+            icon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+        }
+        updateStatsCardsTheme();
     }
 
-    const applyTheme = (theme) => {
-        if (theme === 'light') {
-            htmlElement.setAttribute('data-theme', 'light');
-            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-            themeToggle.setAttribute('aria-label', 'Switch to dark theme');
-        } else {
-            htmlElement.setAttribute('data-theme', 'dark');
-            themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
-            themeToggle.setAttribute('aria-label', 'Switch to light theme');
-        }
-    };
-
-    const getPreferredTheme = () => {
-        const savedTheme = localStorage.getItem(localStorageKey);
-        if (savedTheme) {
-            return savedTheme;
-        }
-        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    };
-
-    const initialTheme = getPreferredTheme();
+    const savedTheme = localStorage.getItem(localStorageKey);
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    const initialTheme = savedTheme || (systemPrefersLight ? 'light' : 'dark');
     applyTheme(initialTheme);
 
     themeToggle.addEventListener('click', () => {
-        const currentTheme = htmlElement.getAttribute('data-theme');
+        const currentTheme = html.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         applyTheme(newTheme);
         localStorage.setItem(localStorageKey, newTheme);
     });
-
-     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (event) => {
-        if (!localStorage.getItem(localStorageKey)) {
-             applyTheme(event.matches ? 'light' : 'dark');
-         }
-     });
 }
-
 
 document.addEventListener('DOMContentLoaded', initializeWebsite);

@@ -11,6 +11,9 @@
     --accent-color: #3498db; /* Original Blue */
     --accent-hover: #5dade2; /* Original Lighter Blue */
     --border-color: #404552;
+
+    --font-primary: 'Lato', sans-serif;
+    --font-headings: 'Poppins', sans-serif;
 }
 
 html[data-theme="dark"] { /* Explicitly define dark theme vars for clarity */
@@ -22,9 +25,6 @@ html[data-theme="dark"] { /* Explicitly define dark theme vars for clarity */
     --theme-accent: var(--accent-color);
     --theme-accent-hover: var(--accent-hover);
     --theme-border: var(--border-color);
-
-    --font-primary: 'Lato', sans-serif;
-    --font-headings: 'Poppins', sans-serif;
 }
 
 html[data-theme="light"] {
@@ -36,9 +36,6 @@ html[data-theme="light"] {
     --theme-accent: #00aaff; /* A clearer, lighter blue accent */
     --theme-accent-hover: #0077cc; /* Darker lighter blue on hover */
     --theme-border: #ced4da; /* Light border */
-
-     --font-primary: 'Lato', sans-serif;
-    --font-headings: 'Poppins', sans-serif;
 }
 
 * {
@@ -133,6 +130,12 @@ p.details, .link-placeholder, .experience-date, span[style*="color: #6c757d"] {
     font-size: 0.9rem;
     transition: color 0.3s ease; /* Smooth transition for theme change */
 }
+.lead-paragraph {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+}
 
 ul {
     list-style: none;
@@ -168,7 +171,7 @@ html[data-theme="light"] .site-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 15px; /* Add gap for spacing between items */
 }
 
 /* Logo Styling (With Emoji) */
@@ -182,13 +185,14 @@ html[data-theme="light"] .site-header {
     align-items: center;
     gap: 0.5em;
     transition: color 0.3s ease; /* Smooth transition for theme change */
-    flex-grow: 1; /* Allow logo to take space */
+    margin-right: auto; /* Push the nav to the right */
 }
 .site-logo:hover { color: var(--theme-accent); } /* Used new variable */
 
 .main-nav {
     display: flex;
     align-items: center;
+    flex-grow: 0; /* Don't take up extra space */
 }
 
 .main-nav ul { display: flex; list-style: none; padding: 0; }
@@ -241,7 +245,7 @@ html[data-theme="light"] .site-header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 20px; /* Added margin to separate from logo */
+    /* Positioning is handled by its order in the container now */
 }
 .theme-toggle:hover {
     color: var(--theme-accent); /* Used new variable */
@@ -498,7 +502,7 @@ html[data-theme="light"] .hero-section {
 .experience-card:hover {
     background-color: var(--bg-secondary); /* Darker background in dark section */ /* Used new variable */
     border-color: var(--theme-accent); /* Used new variable */
-    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); /* GLOW ON HOVER - Kept original blue glow */
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6); /* GLOW ON HOVER (replaces old shadow) - Kept original blue glow */
     transform: translateY(-5px); /* Keep existing transform */
 }
 
@@ -576,6 +580,76 @@ html[data-theme="light"] .hero-section {
 .see-all-button { display: block; width: fit-content; margin: 4rem auto 0 auto; text-align: center; }
 
 .coming-soon-message { text-align: center; margin-top: 4rem; margin-bottom: 2rem; color: var(--text-secondary); font-style: italic; font-size: 1.1rem; } /* Used new variable */
+
+/* ----- STATS SECTION ----- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat-box {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--theme-border);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--theme-accent);
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.6);
+}
+
+.stat-box h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.stat-box .counter {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--theme-accent);
+    display: block;
+}
+
+.stat-box .stats-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.stats-visual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 70%; /* Ce bloc est un peu plus grand */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wakatime-grid {
+    display: grid; /* On le met en grille pour que la stat-box à l'intérieur se comporte bien */
+    max-width: 50%; /* Plus petit que le bloc du dessus, plus grand que les compteurs */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Sur les petits écrans, on remet tout en pleine largeur pour la lisibilité */
+@media (max-width: 768px) {
+    .stats-grid, .stats-visual-grid, .wakatime-grid {
+        max-width: 100%; /* Pleine largeur sur mobile */
+        grid-template-columns: 1fr;
+    }
+}
+
 
 /* ----- CONTACT SECTION ----- */
 .contact-section { text-align: center; }
@@ -747,7 +821,6 @@ button:focus-visible,
      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.15); /* Kept original blue rgba */
 }
 
-
 /* ----- RESPONSIVE DESIGN ----- */
 @media (max-width: 992px) { /* Medium screens / Tablets */
     h2 { font-size: 2.4rem; margin-bottom: 3rem; }
@@ -767,17 +840,16 @@ button:focus-visible,
     .site-header .container {
          flex-wrap: wrap; /* Allow items to wrap to next line */
          justify-content: space-between; /* Distribute items */
-         align-items: flex-start; /* Align items to the top */
-         gap: 0; /* Remove gap here, spacing done on items */
+         align-items: center; /* Align items centrally vertically */
+         gap: 15px; /* Add gap for spacing between items */
     }
     .theme-toggle {
         order: 1; /* Put toggle first */
-        margin-right: 15px; /* Space between toggle and logo */
     }
     .site-logo {
         order: 2; /* Put logo second */
         flex-grow: 1; /* Allow logo to take remaining space on its line */
-        margin-right: 15px; /* Space between logo and menu toggle */
+         margin-right: 0; /* Remove auto margin */
     }
      .main-nav {
          order: 3; /* Put nav third */
@@ -790,7 +862,7 @@ button:focus-visible,
         transform: translateY(-10px);
         transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         width: 100%;
-        position: absolute;
+        position: absolute; /* Use absolute to position below header */
         top: 65px; /* Position below the logo/toggle line */
         left: 0;
         background-color: var(--bg-secondary); /* Used new variable */
