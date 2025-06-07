@@ -41,6 +41,20 @@ function setupStaggeredScrollReveal() {
  * Manages the interactive timeline in the Education section.
  * A dot follows the scroll progress and activates items as it passes them.
  */
+
+class SmoothPoint {
+    constructor(pos) {
+        this.pos = pos;
+        this.movement = 0;
+    }
+
+    update(target, deltaTime) {
+        this.pos += this.movement * deltaTime;
+        this.movement *= 0.8; // inertie (drag)
+        this.movement += (target - this.pos) / 2;
+    }
+}
+
 function setupInteractiveTimeline() {
     const timeline = document.querySelector(".timeline");
     if (!timeline) return;
@@ -52,6 +66,7 @@ function setupInteractiveTimeline() {
     line.appendChild(lineProgress);
     const dot = document.createElement("div");
     dot.className = "timeline-dot";
+    let point = new SmoothPoint(0);
 
     timeline.prepend(line, dot); 
 
@@ -88,8 +103,42 @@ function setupInteractiveTimeline() {
         });
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call to set the state on page load.
+    let lastTimestamp = null;
+
+    function animate(timestamp) {
+        if (!lastTimestamp) lastTimestamp = timestamp;
+        const deltaTime = (timestamp - lastTimestamp) / 1000;
+        lastTimestamp = timestamp;
+
+        const timelineRect = timeline.getBoundingClientRect();
+
+        if (timelineRect.bottom >= 0 && timelineRect.top <= window.innerHeight) {
+            const startPoint = timelineRect.top + window.scrollY - window.innerHeight;
+            const endPoint = timelineRect.top + window.scrollY + timelineRect.height;
+            let targetProgress = (window.scrollY - startPoint) / (endPoint - startPoint);
+            targetProgress = Math.max(0, Math.min(1, targetProgress));
+            const targetY = targetProgress * timelineRect.height;
+
+            point.update(targetY, deltaTime);
+
+            dot.style.top = `${point.pos}px`;
+            lineProgress.style.height = `${point.pos}px`;
+
+            tiles.forEach(tile => {
+                if (!tile.classList.contains('is-activated')) {
+                    const tileTop = tile.offsetTop;
+                    const tileHeight = tile.offsetHeight;
+                    if (point.pos > tileTop + tileHeight / 2) {
+                        tile.classList.add('is-activated');
+                    }
+                }
+            });
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
 }
 
 // -----------------------------------------------------------------------------
