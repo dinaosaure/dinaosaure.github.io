@@ -11,8 +11,8 @@
   --text-medium: #A4B9CC;
   --text-headings: #EAF6FF;
 
-  --accent-color: #569CD6;   
-  --accent-hover: #7CBDEB;
+  --accent-color: #007acc;   
+  --accent-hover: #005fa3;
   --border-color: #26415E;
 
   /* === Default (DARK) applied to site unless overridden === */
@@ -36,21 +36,24 @@ html[data-theme="dark"] {
   --text-primary: #D8E9F7;
   --text-secondary: #A4B9CC;
   --text-heading: #EAF6FF;
-  --theme-accent: #569CD6;
-  --theme-accent-hover: #7CBDEB;
+  --theme-accent: #3366cc;
+  --theme-accent-hover: #254bb5;
   --theme-border: #26415E;
 }
 
 /* === LIGHT THEME === */
 html[data-theme="light"] {
-  --bg-primary: #E6F4F9;
-  --bg-secondary: #F3FAFD;
-  --text-primary: #343a40;
-  --text-secondary: #6c757d;
-  --text-heading: #212529;
-  --theme-accent: #A0D2EB;
-  --theme-accent-hover: #65B2DA;
-  --theme-border: #D0E4EF;
+  --bg-primary: #ecf3f8;              /* légèrement bleuté, reposant */
+  --bg-secondary: #deeaf3;            /* pour les sections */
+  
+  --text-primary: #1e1e1e;
+  --text-secondary: #5e5e72;
+  --text-heading: #121212;
+
+  --theme-accent: #3366cc;            /* ton bleu préféré */
+  --theme-accent-hover: #254bb5;
+
+  --theme-border: #cfd8e3;
 }
 
 * {
