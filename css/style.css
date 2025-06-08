@@ -416,35 +416,76 @@ html[data-theme="light"] .hero-section {
     max-width: 800px;
     margin: 0 auto;
 }
+
 .timeline::after,
 .timeline-item::after,
 .timeline-item::before {
     display: none;
 }
+
 .timeline-item {
     position: relative;
     width: 50%;
     padding: 10px 40px;
     box-sizing: border-box;
 }
-.timeline-item:nth-child(odd) { left: 0; }
-.timeline-item:nth-child(even) { left: 50%; }
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
 .timeline-content {
     padding: 20px 30px;
     background-color: var(--bg-secondary);
     position: relative;
     border-radius: 8px;
     border: 1px solid var(--theme-border);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+
+    /* Nouveaux effets désactivés */
+    opacity: 0.4;
+    transform: scale(0.97);
+    filter: brightness(0.8);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease,
+        filter 0.4s ease;
 }
+
 .timeline-item.is-activated .timeline-content {
+    opacity: 1;
+    transform: scale(1.03);
+    filter: brightness(1);
     border-color: var(--theme-accent);
     box-shadow: 0 0 25px rgba(52, 152, 219, 0.6);
-    transform: scale(1.03);
+
+    /* Animation d'activation douce */
+    animation: bump-light 0.3s ease-out;
 }
-.timeline-content h3 { font-size: 1.4rem; color: var(--theme-accent); margin-bottom: 0.5rem; }
-.timeline-content p { font-size: 1rem; margin-bottom: 0.5rem; color: var(--text-primary); }
-.timeline-content p.details { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0; }
+
+.timeline-content h3 {
+    font-size: 1.4rem;
+    color: var(--theme-accent);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.timeline-content p.details {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
 
 .timeline-line {
     position: absolute;
@@ -455,6 +496,7 @@ html[data-theme="light"] .hero-section {
     background-color: var(--theme-border);
     transform: translateX(-50%);
 }
+
 .timeline-progress {
     position: absolute;
     left: 0;
@@ -463,6 +505,7 @@ html[data-theme="light"] .hero-section {
     height: 0;
     background-color: var(--theme-accent);
 }
+
 .timeline-dot {
     position: absolute;
     left: 50%;
@@ -475,6 +518,13 @@ html[data-theme="light"] .hero-section {
     transform: translate(-50%, -50%);
     z-index: 10;
     transition: top 0.1s linear;
+}
+
+/* Animation bump light pour une petite impulsion visuelle à l'activation */
+@keyframes bump-light {
+    0%   { transform: scale(1); filter: brightness(1); }
+    50%  { transform: scale(1.05); filter: brightness(1.1); }
+    100% { transform: scale(1.03); filter: brightness(1); }
 }
 
 

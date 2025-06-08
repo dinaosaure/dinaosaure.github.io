@@ -91,15 +91,12 @@ function setupInteractiveTimeline() {
 
         // Activate cards as the dot passes them.
         tiles.forEach(tile => {
-            if (!tile.classList.contains('is-activated')) {
-                const tileTop = tile.offsetTop;
-                const tileHeight = tile.offsetHeight;
+            const tileTop = tile.offsetTop;
+            const tileHeight = tile.offsetHeight;
+            const dotY = typeof dotPosition !== 'undefined' ? dotPosition : point.pos;
+            const shouldBeActive = dotY > tileTop + tileHeight / 2;
 
-                // Activate the card once the dot has passed its midpoint.
-                if (dotPosition > tileTop + tileHeight / 2) {
-                    tile.classList.add('is-activated');
-                }
-            }
+            tile.classList.toggle('is-activated', shouldBeActive);
         });
     };
 
@@ -125,13 +122,12 @@ function setupInteractiveTimeline() {
             lineProgress.style.height = `${point.pos}px`;
 
             tiles.forEach(tile => {
-                if (!tile.classList.contains('is-activated')) {
-                    const tileTop = tile.offsetTop;
-                    const tileHeight = tile.offsetHeight;
-                    if (point.pos > tileTop + tileHeight / 2) {
-                        tile.classList.add('is-activated');
-                    }
-                }
+                const tileTop = tile.offsetTop;
+                const tileHeight = tile.offsetHeight;
+                const dotY = typeof dotPosition !== 'undefined' ? dotPosition : point.pos;
+                const shouldBeActive = dotY > tileTop + tileHeight / 2;
+
+                tile.classList.toggle('is-activated', shouldBeActive);
             });
         }
 
