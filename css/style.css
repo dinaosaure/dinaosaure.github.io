@@ -2,40 +2,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap');
 
 /* --- CSS Variables for Theming --- */
-:root { /* Default: Dark Theme (using original names) */
-    --bg-dark-primary: #1a1d24;
-    --bg-dark-secondary: #2a2f3a;
-    --text-light: #e0e0e0;
-    --text-medium: #a0a0a0;
-    --text-headings: #ffffff;
-    --accent-color: #3498db; /* Original Blue */
-    --accent-hover: #5dade2; /* Original Lighter Blue */
-    --border-color: #404552;
+:root {
+  /* === DARK BLUE THEME (DEFAULT) === */
+  --bg-dark-primary: #0F1C2E;
+  --bg-dark-secondary: #1A2B44;
 
-    --font-primary: 'Lato', sans-serif;
-    --font-headings: 'Poppins', sans-serif;
+  --text-light: #D8E9F7;
+  --text-medium: #A4B9CC;
+  --text-headings: #EAF6FF;
+
+  --accent-color: #569CD6;   
+  --accent-hover: #7CBDEB;
+  --border-color: #26415E;
+
+  /* === Default (DARK) applied to site unless overridden === */
+  --bg-primary: var(--bg-dark-primary);
+  --bg-secondary: var(--bg-dark-secondary);
+  --text-primary: var(--text-light);
+  --text-secondary: var(--text-medium);
+  --text-heading: var(--text-headings);
+  --theme-accent: var(--accent-color);
+  --theme-accent-hover: var(--accent-hover);
+  --theme-border: var(--border-color);
+
+  --font-primary: 'Lato', sans-serif;
+  --font-headings: 'Poppins', sans-serif;
 }
 
-html[data-theme="dark"] { /* Explicitly define dark theme vars for clarity */
-    --bg-primary: var(--bg-dark-primary);
-    --bg-secondary: var(--bg-dark-secondary);
-    --text-primary: var(--text-light);
-    --text-secondary: var(--text-medium);
-    --text-heading: var(--text-headings);
-    --theme-accent: var(--accent-color);
-    --theme-accent-hover: var(--accent-hover);
-    --theme-border: var(--border-color);
+/* === DARK THEME (explicit override) === */
+html[data-theme="dark"] {
+  --bg-primary: #0F1C2E;
+  --bg-secondary: #1A2B44;
+  --text-primary: #D8E9F7;
+  --text-secondary: #A4B9CC;
+  --text-heading: #EAF6FF;
+  --theme-accent: #569CD6;
+  --theme-accent-hover: #7CBDEB;
+  --theme-border: #26415E;
 }
 
+/* === LIGHT THEME === */
 html[data-theme="light"] {
-    --bg-primary: #f4f7f6; /* White-ish background */
-    --bg-secondary: #e9eceb; /* Light grey-ish background */
-    --text-primary: #343a40; /* Dark grey text */
-    --text-secondary: #6c757d; /* Medium grey text */
-    --text-heading: #212529; /* Very dark grey text */
-    --theme-accent: #00aaff; /* A clearer, lighter blue accent */
-    --theme-accent-hover: #0077cc; /* Darker lighter blue on hover */
-    --theme-border: #ced4da; /* Light border */
+  --bg-primary: #E6F4F9;
+  --bg-secondary: #F3FAFD;
+  --text-primary: #343a40;
+  --text-secondary: #6c757d;
+  --text-heading: #212529;
+  --theme-accent: #A0D2EB;
+  --theme-accent-hover: #65B2DA;
+  --theme-border: #D0E4EF;
 }
 
 * {
@@ -560,6 +575,28 @@ a:focus-visible, button:focus-visible, .skill-bubble:focus-visible, .cta-button:
 .back-to-top-btn:focus-visible { background-color: var(--theme-accent-hover); color: #ffffff; }
 .experience-card:focus-within, .project-card:focus-within, .timeline-content:focus-within { border-color: var(--theme-accent-hover); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.15); }
 
+body,
+section,
+.stat-box,
+.timeline-content,
+.project-card,
+.experience-card,
+.contact-link,
+.site-footer,
+.cta-button,
+.theme-toggle,
+.back-to-top-btn {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+h1, h2, h3, h4, h5, h6,
+a,
+.skill-bubble,
+.download-cv-button,
+.stat-box .counter {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
 /* ----- RESPONSIVE DESIGN ----- */
 @media (max-width: 992px) {
     h2 { font-size: 2.4rem; margin-bottom: 3rem; }
@@ -645,4 +682,19 @@ a:focus-visible, button:focus-visible, .skill-bubble:focus-visible, .cta-button:
     .starter-pack-image { max-width: 95%; width: 95%; }
     .back-to-top-btn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1rem; }
     .experience-logo { width: 50px; height: 50px; }
+}
+
+.coming-soon-message {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 4rem;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
