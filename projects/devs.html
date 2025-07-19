@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Devs: rogue-like video game (C#, Godot) by Dina DIDOUCHE.">
+    <meta name="keywords" content="Devs, video game, C#, Godot, EPITA, project, Dina DIDOUCHE">
+    <meta name="author" content="Dina DIDOUCHE">
+    <title>Devs Game Project - Dina's Website</title>
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="../images/profilepictransparent.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .project-section-centered { text-align: center; max-width: 900px; margin: 0 auto; }
+        .project-section-centered h1, .project-section-centered h2, .project-section-centered h3 { text-align: center; }
+        .project-intro { margin-bottom: 2.5rem; }
+        .project-card-block { background: var(--bg-secondary); border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); padding: 2rem 1.5rem; min-width: 260px; max-width: 700px; margin: 0 auto 2.2rem auto; text-align: left; display: flex; flex-direction: column; align-items: flex-start; transition: transform 0.25s cubic-bezier(.4,1.6,.6,1), box-shadow 0.25s; }
+        .project-card-block:hover { transform: scale(1.045); box-shadow: 0 4px 24px rgba(52,152,219,0.13); }
+        .project-card-block h3 { font-size: 1.2rem; color: var(--theme-accent); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.7em; }
+        .project-card-block ul { margin: 0; padding-left: 1.2em; }
+        .project-card-block li { margin-bottom: 0.7em; font-size: 1.02rem; color: var(--text-primary); }
+        .project-card-block i { color: var(--theme-accent); min-width: 22px; }
+        .media-gallery { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 3rem 0; }
+        .media-gallery figure { flex: 1 1 220px; max-width: 260px; min-width: 180px; display: flex; flex-direction: column; align-items: center; }
+        .media-gallery img { width: 100%; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 0.7rem; transition: transform 0.25s cubic-bezier(.4,1.6,.6,1), box-shadow 0.25s; }
+        .media-gallery img:hover { transform: scale(1.045); box-shadow: 0 4px 24px rgba(52,152,219,0.13); }
+        .media-gallery figcaption { font-size: 0.98rem; color: var(--text-secondary); text-align: center; margin-top: 0.2rem; }
+        .challenges-block { background: var(--bg-secondary); border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.04); padding: 2.2rem 1.5rem; margin: 3.5rem auto 2.5rem auto; max-width: 700px; transition: transform 0.25s cubic-bezier(.4,1.6,.6,1), box-shadow 0.25s; }
+        .challenges-block:hover { transform: scale(1.045); box-shadow: 0 4px 24px rgba(52,152,219,0.13); }
+        .challenges-block h2 { display: flex; align-items: center; gap: 0.7em; font-size: 1.3rem; color: var(--theme-accent); margin-bottom: 1.2rem; }
+        .challenges-block ul { text-align: left; margin: 0; padding-left: 1.2em; }
+        .challenges-block li { margin-bottom: 0.7em; font-size: 1.02rem; color: var(--text-primary); }
+        .challenges-block i { color: var(--theme-accent); min-width: 22px; }
+        hr.section-sep { border: none; border-top: 2px solid var(--theme-border); margin: 3.5rem auto 3.5rem auto; max-width: 200px; opacity: 0.25; }
+        @media (max-width: 700px) { .media-gallery { gap: 1rem; } .media-gallery figure { max-width: 100%; } .challenges-block, .project-section-centered { padding-left: 0.5rem; padding-right: 0.5rem; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="../index.html" class="site-logo">
+                <span class="logo-dino-emoji" aria-hidden="true">🦕</span>
+                Dina DIDOUCHE
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html#accueil">Home</a></li>
+                    <li><a href="../index.html#a-propos">About</a></li>
+                    <li><a href="../index.html#education">Education</a></li>
+                    <li><a href="../index.html#experience">Experience</a></li>
+                    <li><a href="../projects.html">Projects</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="light-section project-section-centered">
+            <div class="project-intro">
+                <h1>Devs <span class="project-year">(2023)</span></h1>
+                <p class="project-subtitle" style="font-size:1.3rem; color:var(--theme-accent); margin-bottom:1.2rem;">A rogue-like video game developed with Godot and C#.</p>
+                <p style="font-size:1.15rem; max-width:700px; margin:0 auto 1.2rem auto;">Procedural dungeons, turn-based combat, and custom sprites.</p>
+                <p style="font-size:1.08rem; max-width:700px; margin:0 auto 2.5rem auto;">Devs is a rogue-like video game created as part of the 1st year programming curriculum at EPITA. The project involved procedural level generation, multiple character classes, and a variety of enemies and items. It was an opportunity to learn about game development, teamwork, and the Godot engine.</p>
+                <div style="margin-bottom:2.5rem;">
+                    <a href="https://github.com/CelinaMeiLin/SUPERDEVS" target="_blank" rel="noopener noreferrer" class="cta-button">
+                        <i class="fab fa-github"></i> Source Code
+                    </a>
+                </div>
+            </div>
+            <hr class="section-sep" />
+            <div class="project-card-block">
+                <h3><i class="fas fa-cogs"></i> Stack & Tools</h3>
+                <ul>
+                    <li><b>Languages:</b> C#</li>
+                    <li><b>Engine:</b> Godot</li>
+                    <li><b>Tools:</b> Git, GitHub</li>
+                    <li><b>Platform:</b> Windows, Linux</li>
+                </ul>
+            </div>
+            <div class="project-card-block">
+                <h3><i class="fas fa-star"></i> Key Features</h3>
+                <ul>
+                    <li><i class="fas fa-fist-raised"></i> <b>Turn-Based Combat:</b> Strategic gameplay with multiple character classes.</li>
+                    <li><i class="fas fa-book-open"></i> <b>Tutorial & Multiple Levels:</b> The game features an introductory tutorial and several distinct levels to explore and master.</li>
+                    <li><i class="fas fa-palette"></i> <b>Custom Sprites & Animations:</b> Visuals mixing original pixel art and open-source assets.</li>
+                    <li><i class="fas fa-users"></i> <b>Team-Based Development:</b> Collaboration using Git and GitHub.</li>
+                </ul>
+            </div>
+            <hr class="section-sep" />
+            <div class="challenges-block">
+                <h2><i class="fas fa-gamepad"></i> Game Design & Inspirations</h2>
+                <ul>
+                    <li><b>Rogue-like Inspiration:</b> The game draws from classic and modern rogue-likes, focusing on replayability, challenge, and the thrill of starting over to surpass your previous runs. The permadeath mechanic and randomization keep each playthrough engaging.</li>
+                    <li><b>Cyberpunk Universe:</b> The world of Devs is set in a dystopian, cyberpunk future, inspired by works like Cyberpunk 2077 and Edgerunners. The contrast between advanced technology and social decay shapes the game’s atmosphere and visual identity.</li>
+                    <li><b>Gameplay & Progression:</b> Strategic, turn-based combat encourages thoughtful play. Players unlock new skills and upgrades as they progress, with a dynamic experience and skill system. The game features a currency system, shop, and a variety of enemies with unique AI behaviors.</li>
+                    <li><b>Art & Audio:</b> Custom visuals and pixel art assets, mixing original creations and open-source resources, give the game a distinctive, retro-futuristic look. The soundtrack, inspired by synthwave, enhances immersion and nostalgia.</li>
+                    <li><b>Player Experience:</b> Special attention was given to UI/UX, menus, and feedback (pause, game over, sound settings, etc.) to ensure a smooth and engaging experience for all players.</li>
+                    <li><b>Technical & Creative Challenges:</b> The project was a first for the team in game development, requiring mastery of Godot, C#, version control, and collaborative workflows. Implementing multiplayer, AI, and level design were major learning opportunities.</li>
+                    <li><b>Vision:</b> The ultimate goal was to create a fun, authentic, and accessible rogue-like that would entertain and challenge players, while serving as a springboard for future creative projects.</li>
+                </ul>
+            </div>
+            <hr class="section-sep" />
+            <h2 style="margin-bottom:2.2rem;">Media Gallery</h2>
+            <div class="media-gallery">
+                <figure>
+                    <img src="../images/devs/menu_principal.png" alt="Main Menu">
+                    <figcaption>Main Menu</figcaption>
+                </figure>
+                <figure>
+                    <img src="../images/devs/tutorial_level.png" alt="Tutorial Level">
+                    <figcaption>Tutorial Level</figcaption>
+                </figure>
+                <figure>
+                    <img src="../images/devs/level1.jpg" alt="Level 1">
+                    <figcaption>Level 1</figcaption>
+                </figure>
+                <figure>
+                    <img src="../images/devs/menu_game_over.png" alt="Game Over Menu">
+                    <figcaption>Game Over Menu</figcaption>
+                </figure>
+                <figure>
+                    <img src="../images/devs/boutiquestats.png" alt="Stats Shop">
+                    <figcaption>Stats Shop</figcaption>
+                </figure>
+                <figure>
+                    <img src="../images/devs/astrashootinggus.png" alt="Astra Shooting Gus">
+                    <figcaption>Astra Shooting Gus</figcaption>
+                </figure>
+                <figure>
+                    <img src="../images/devs/gus.png" alt="Gus (Enemy)">
+                    <figcaption>Gus (Enemy)</figcaption>
+                </figure>
+            </div>
+            <hr class="section-sep" />
+            <div class="challenges-block">
+                <h2><i class="fas fa-lightbulb"></i> Technical Challenges & Learnings</h2>
+                <ul>
+                    <li>Learning the Godot engine and C# scripting.</li>
+                    <li>Implementing procedural generation algorithms.</li>
+                    <li>Coordinating a team and managing tasks.</li>
+                    <li>Balancing gameplay and debugging.</li>
+                </ul>
+            </div>
+            <div style="text-align:center; margin-top: 3.5rem;">
+                <a href="../projects.html" class="cta-button see-all-button">← Back to All Projects</a>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="current-year">2025</span> Dina DIDOUCHE. All rights reserved.</p>
+            <p><a href="../LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+            <img src="../images/dinos/peeking-dino.svg" alt="" class="footer-dino">
+        </div>
+    </footer>
+    <script src="../js/script.js"></script>
+</body>
+</html>
