@@ -567,6 +567,57 @@ html[data-theme="light"] .hero-section {
 .image-attribution a:hover { color: var(--text-primary); }
 .see-all-button { display: block; width: fit-content; margin: 4rem auto 0 auto; text-align: center; }
 
+
+/* ----- PROJECT DETAILS PAGE (GREENWATCH) - FINAL ----- */
+#greenwatch-project-details .screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    justify-content: center;
+}
+
+#greenwatch-project-details .screenshot-gallery figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--theme-border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#greenwatch-project-details .screenshot-gallery figure:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-color: var(--theme-accent);
+}
+
+#greenwatch-project-details .screenshot-gallery img {
+    width: 100%;
+    /* Generous height to allow tall images to display fully */
+    height: 700px;
+    /* This is the key change: ensures the whole image is visible */
+    object-fit: contain;
+    /* Aligns the contained image to the top */
+    object-position: top;
+    /* Black background simulates a phone screen for letterboxing */
+    background-color: #000;
+}
+
+#greenwatch-project-details .screenshot-gallery figcaption {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--theme-border);
+    margin-top: auto; /* Pushes caption to the bottom if image is short */
+}
+
+
 /* ----- STATS SECTION ----- */
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 65%; margin-left: auto; margin-right: auto; }
 .stat-box { background-color: var(--bg-secondary); border: 1px solid var(--theme-border); border-radius: 8px; padding: 2rem; text-align: center; transition: all 0.3s ease; }
@@ -742,6 +793,10 @@ a,
     .starter-pack-image { max-width: 95%; width: 95%; }
     .back-to-top-btn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1rem; }
     .experience-logo { width: 50px; height: 50px; }
+    
+    #greenwatch-project-details .screenshot-gallery img {
+        height: 600px; /* Keep a tall height even on mobile for consistency */
+    }
 }
 
 .coming-soon-message {
