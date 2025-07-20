@@ -348,9 +348,6 @@ html[data-theme="light"] .hero-section {
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2); 
     cursor: pointer;
     margin-bottom: 1.2rem;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
     text-align: center;
 }
 
@@ -953,7 +950,7 @@ a,
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 1.5rem;
-        font-size: 1rem;
+        display: block;
     }
     .project-links, .project-links .cta-button {
         display: flex;
