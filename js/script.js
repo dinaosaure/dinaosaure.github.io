@@ -307,3 +307,17 @@ function setupThemeToggle() {
 
 // --- Initialize the website ---
 document.addEventListener('DOMContentLoaded', initializeWebsite);
+
+// === Fade on scroll ===
+(function() {
+    // Ajoute la transition si elle n'est pas déjà dans le CSS
+    document.body.style.transition = 'opacity 0.35s cubic-bezier(.4,1.6,.6,1)';
+    let fadeTimeout;
+    window.addEventListener('scroll', function() {
+        document.body.style.opacity = '0.85';
+        clearTimeout(fadeTimeout);
+        fadeTimeout = setTimeout(() => {
+            document.body.style.opacity = '1';
+        }, 250);
+    });
+})();
