@@ -53,7 +53,7 @@ html[data-theme="light"] {
   --text-heading: #121212;
 
   --theme-accent: #3366cc;            /* ton bleu préféré */
-  --theme-accent-hover: #254bb5;
+  --theme-accent-hover: #   ;
 
   --theme-border: #cfd8e3;
 }
@@ -289,7 +289,7 @@ html[data-theme="light"] .site-header {
 .hero-section {
     text-align: center;
     padding: 100px 0 80px 0;
-    background: linear-gradient(rgba(26, 29, 36, 0.8), rgba(26, 29, 36, 0.9)), url('../images/profilepic.png') no-repeat center center/cover; /* Original dark gradient */
+    background: linear-gradient(rgba(26, 29, 36, 0.8), rgba(26, 29, 36, 0.9)), url('../images/profile.jpg') no-repeat center center/cover; /* Original dark gradient */
     min-height: 70vh;
     display: flex;
     flex-direction: column;
@@ -298,7 +298,7 @@ html[data-theme="light"] .site-header {
      transition: background 0.3s ease;
 }
 html[data-theme="light"] .hero-section {
-     background: linear-gradient(rgba(244, 247, 246, 0.8), rgba(244, 247, 246, 0.9)), url('../images/profilepic.png') no-repeat center center/cover; /* Light gradient using light primary background */
+     background: linear-gradient(rgba(244, 247, 246, 0.8), rgba(244, 247, 246, 0.9)), url('../images/profile.jpg') no-repeat center center/cover; /* Light gradient using light primary background */
 }
 
 .hero-profile-pic {
@@ -321,7 +321,7 @@ html[data-theme="light"] .hero-section {
     position: absolute;
     inset: 0;
 
-    background-image: url("../images/profilepic.png");
+    background-image: url("../images/profile.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 
