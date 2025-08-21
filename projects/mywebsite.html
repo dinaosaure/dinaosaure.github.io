@@ -11,6 +11,30 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .project-section-centered { text-align: center; max-width: 900px; margin: 0 auto; }
+        .project-section-centered h1, .project-section-centered h2, .project-section-centered h3 { text-align: center; }
+        .project-intro { margin-bottom: 2.5rem; }
+        .project-card-block { background: var(--bg-secondary); border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); padding: 2rem 1.5rem; min-width: 260px; max-width: 700px; margin: 0 auto 2.2rem auto; text-align: left; display: flex; flex-direction: column; align-items: flex-start; transition: transform 0.25s cubic-bezier(.4,1.6,.6,1), box-shadow 0.25s; }
+        .project-card-block:hover { transform: scale(1.045); box-shadow: 0 4px 24px rgba(52,152,219,0.13); }
+        .project-card-block h3 { font-size: 1.2rem; color: var(--theme-accent); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.7em; }
+        .project-card-block ul { margin: 0; padding-left: 1.2em; }
+        .project-card-block li { margin-bottom: 0.7em; font-size: 1.02rem; color: var(--text-primary); }
+        .project-card-block i { color: var(--theme-accent); min-width: 22px; }
+        .media-gallery { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 3rem 0; }
+        .media-gallery figure { flex: 1 1 220px; max-width: 260px; min-width: 180px; display: flex; flex-direction: column; align-items: center; }
+        .media-gallery img { width: 100%; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 0.7rem; transition: transform 0.25s cubic-bezier(.4,1.6,.6,1), box-shadow 0.25s; }
+        .media-gallery img:hover { transform: scale(1.045); box-shadow: 0 4px 24px rgba(52,152,219,0.13); }
+        .media-gallery figcaption { font-size: 0.98rem; color: var(--text-secondary); text-align: center; margin-top: 0.2rem; }
+        .challenges-block { background: var(--bg-secondary); border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.04); padding: 2.2rem 1.5rem; margin: 3.5rem auto 2.5rem auto; max-width: 700px; transition: transform 0.25s cubic-bezier(.4,1.6,.6,1), box-shadow 0.25s; }
+        .challenges-block:hover { transform: scale(1.045); box-shadow: 0 4px 24px rgba(52,152,219,0.13); }
+        .challenges-block h2 { display: flex; align-items: center; gap: 0.7em; font-size: 1.3rem; color: var(--theme-accent); margin-bottom: 1.2rem; }
+        .challenges-block ul { text-align: left; margin: 0; padding-left: 1.2em; }
+        .challenges-block li { margin-bottom: 0.7em; font-size: 1.02rem; color: var(--text-primary); }
+        .challenges-block i { color: var(--theme-accent); min-width: 22px; }
+        hr.section-sep { border: none; border-top: 2px solid var(--theme-border); margin: 3.5rem auto 3.5rem auto; max-width: 200px; opacity: 0.25; }
+        @media (max-width: 700px) { .media-gallery { gap: 1rem; } .media-gallery figure { max-width: 100%; } .challenges-block, .project-section-centered { padding-left: 0.5rem; padding-right: 0.5rem; } }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -36,53 +60,74 @@
         </div>
     </header>
     <main>
-        <section id="project-details" class="light-section">
-            <div class="container">
-                <h1 style="margin-bottom:0.5em;">Personal Website <span class="project-year">(2024)</span></h1>
-                <p class="project-subtitle">Portfolio & Projects Showcase</p>
-                <div class="project-summary">
-                    <p>This is the website you are currently viewing! Built from scratch to showcase my projects, skills, and experience, and to serve as a digital portfolio.</p>
-                </div>
-                <div class="project-meta">
-                    <ul>
-                        <li><strong>Role:</strong> Designer & Developer</li>
-                        <li><strong>Tech Stack:</strong> HTML, CSS, JavaScript</li>
-                        <li><strong>Year:</strong> 2024</li>
-                    </ul>
-                </div>
-                <div class="project-links" style="text-align:center; margin: 2rem 0 2.5rem 0;">
+        <section class="light-section project-section-centered">
+            <div class="project-intro">
+                <h1>Personal Website <span class="project-year">(2024)</span></h1>
+                <p class="project-subtitle" style="font-size:1.3rem; color:var(--theme-accent); margin-bottom:1.2rem;">Portfolio & Projects Showcase</p>
+                <p style="font-size:1.15rem; max-width:700px; margin:0 auto 1.2rem auto;">This is the website you are currently viewing!</p>
+                <p style="font-size:1.08rem; max-width:700px; margin:0 auto 2.5rem auto;">Built from scratch to showcase my projects, skills, and experience, and to serve as a digital portfolio. The website is fully responsive, accessible, and designed for clarity and ease of navigation. It features dynamic content, interactive elements, and a modern, playful design that reflects my personality and technical abilities.</p>
+                <div style="margin-bottom:2.5rem;">
                     <a href="https://github.com/dinaosaure/dinaosaure.github.io" target="_blank" rel="noopener noreferrer" class="cta-button">
                         <i class="fab fa-github"></i> Source Code
                     </a>
                 </div>
-                <div class="project-description">
-                    <h2>Project Overview</h2>
-                    <p>The website is fully responsive, accessible, and designed for clarity and ease of navigation. It features dynamic content, interactive elements, and a modern, playful design.</p>
-                    <ul>
-                        <li>Responsive layout for all devices</li>
-                        <li>Custom JavaScript for interactivity</li>
-                        <li>Accessible and semantic HTML</li>
-                        <li>Showcases all my main projects and experience</li>
-                    </ul>
-                </div>
-                <div class="screenshot-gallery" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin: 2.5rem 0;">
-                    <figure style="flex:1 1 180px; max-width:220px;">
-                        <img src="../images/projects/Website.png" alt="Website Screenshot" style="width:100%;border-radius:10px;">
-                        <figcaption>Website Screenshot</figcaption>
-                    </figure>
-                </div>
-                <div class="project-challenges">
-                    <h2>Challenges & Learnings</h2>
-                    <ul>
-                        <li>Designing a site from scratch</li>
-                        <li>Ensuring accessibility and responsiveness</li>
-                        <li>Maintaining and updating content easily</li>
-                        <li>Deploying on GitHub Pages</li>
-                    </ul>
-                </div>
-                <div style="text-align:center; margin-top: 3.5rem;">
-                    <a href="../projects.html" class="cta-button see-all-button">← Back to All Projects</a>
-                </div>
+            </div>
+            <hr class="section-sep" />
+            <div class="project-card-block">
+                <h3><i class="fas fa-cogs"></i> Stack & Tools</h3>
+                <ul>
+                    <li><b>Languages:</b> HTML5, CSS3, JavaScript (ES6+)</li>
+                    <li><b>Frameworks:</b> Vanilla JS, CSS Custom Properties</li>
+                    <li><b>Tools:</b> Git, GitHub Pages, VS Code</li>
+                    <li><b>Design:</b> Responsive design, CSS Grid, Flexbox</li>
+                </ul>
+            </div>
+            <hr class="section-sep" />
+            <div class="project-card-block">
+                <h3><i class="fas fa-star"></i> Key Features</h3>
+                <ul>
+                    <li><i class="fas fa-mobile-alt"></i> <b>Responsive Design:</b> Optimized for all devices and screen sizes.</li>
+                    <li><i class="fas fa-palette"></i> <b>Dynamic Theming:</b> Light/dark mode toggle with smooth transitions.</li>
+                    <li><i class="fas fa-project-diagram"></i> <b>Project Showcase:</b> Comprehensive display of all projects with detailed pages.</li>
+                    <li><i class="fas fa-user-tie"></i> <b>Professional Portfolio:</b> Clean presentation of skills, education, and experience.</li>
+                    <li><i class="fas fa-code"></i> <b>Interactive Elements:</b> Smooth scrolling, hover effects, and animations.</li>
+                    <li><i class="fas fa-universal-access"></i> <b>Accessibility:</b> Semantic HTML, ARIA labels, and keyboard navigation.</li>
+                    <li><i class="fas fa-rocket"></i> <b>Performance:</b> Optimized images, efficient CSS, and minimal JavaScript.</li>
+                </ul>
+            </div>
+            <hr class="section-sep" />
+            <div class="challenges-block">
+                <h2><i class="fas fa-globe"></i> Web Development & Portfolio</h2>
+                <ul>
+                    <li><b>Personal Branding:</b> This website serves as my digital identity and first impression for potential employers and collaborators.</li>
+                    <li><b>Technical Demonstration:</b> Showcases my proficiency in modern web technologies and best practices.</li>
+                    <li><b>Content Management:</b> Designed for easy updates and maintenance as my career progresses.</li>
+                    <li><b>Professional Growth:</b> Represents my journey in computer science and serves as a living portfolio.</li>
+                </ul>
+            </div>
+            <hr class="section-sep" />
+            <h2 style="margin-bottom:2.2rem;">Media Gallery</h2>
+            <div class="media-gallery">
+                <figure>
+                    <img src="../images/projects/Website.png" alt="Website Screenshot">
+                    <figcaption>Website Screenshot</figcaption>
+                </figure>
+            </div>
+            <hr class="section-sep" />
+            <div class="challenges-block">
+                <h2><i class="fas fa-lightbulb"></i> Technical Challenges & Learnings</h2>
+                <ul>
+                    <li>Designing a complete website architecture from scratch.</li>
+                    <li>Implementing responsive design principles for all devices.</li>
+                    <li>Creating an intuitive navigation and user experience.</li>
+                    <li>Ensuring accessibility standards and cross-browser compatibility.</li>
+                    <li>Optimizing performance and loading times.</li>
+                    <li>Managing content organization and project structure.</li>
+                    <li>Deploying and maintaining on GitHub Pages.</li>
+                </ul>
+            </div>
+            <div style="text-align:center; margin-top: 3.5rem;">
+                <a href="../projects.html" class="cta-button see-all-button">← Back to All Projects</a>
             </div>
         </section>
     </main>

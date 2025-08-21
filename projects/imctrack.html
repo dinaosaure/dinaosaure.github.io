@@ -11,6 +11,30 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .project-section-centered { text-align: center; max-width: 900px; margin: 0 auto; }
+        .project-section-centered h1, .project-section-centered h2, .project-section-centered h3 { text-align: center; }
+        .project-intro { margin-bottom: 2.5rem; }
+        .project-card-block { background: var(--bg-secondary); border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); padding: 2rem 1.5rem; min-width: 260px; max-width: 700px; margin: 0 auto 2.2rem auto; text-align: left; display: flex; flex-direction: column; align-items: flex-start; transition: transform 0.25s cubic-bezier(.4,1.6,.6,1), box-shadow 0.25s; }
+        .project-card-block:hover { transform: scale(1.045); box-shadow: 0 4px 24px rgba(52,152,219,0.13); }
+        .project-card-block h3 { font-size: 1.2rem; color: var(--theme-accent); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.7em; }
+        .project-card-block ul { margin: 0; padding-left: 1.2em; }
+        .project-card-block li { margin-bottom: 0.7em; font-size: 1.02rem; color: var(--text-primary); }
+        .project-card-block i { color: var(--theme-accent); min-width: 22px; }
+        .media-gallery { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 3rem 0; }
+        .media-gallery figure { flex: 1 1 220px; max-width: 260px; min-width: 180px; display: flex; flex-direction: column; align-items: center; }
+        .media-gallery img { width: 100%; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 0.7rem; transition: transform 0.25s cubic-bezier(.4,1.6,.6,1), box-shadow 0.25s; }
+        .media-gallery img:hover { transform: scale(1.045); box-shadow: 0 4px 24px rgba(52,152,219,0.13); }
+        .media-gallery figcaption { font-size: 0.98rem; color: var(--text-secondary); text-align: center; margin-top: 0.2rem; }
+        .challenges-block { background: var(--bg-secondary); border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.04); padding: 2.2rem 1.5rem; margin: 3.5rem auto 2.5rem auto; max-width: 700px; transition: transform 0.25s cubic-bezier(.4,1.6,.6,1), box-shadow 0.25s; }
+        .challenges-block:hover { transform: scale(1.045); box-shadow: 0 4px 24px rgba(52,152,219,0.13); }
+        .challenges-block h2 { display: flex; align-items: center; gap: 0.7em; font-size: 1.3rem; color: var(--theme-accent); margin-bottom: 1.2rem; }
+        .challenges-block ul { text-align: left; margin: 0; padding-left: 1.2em; }
+        .challenges-block li { margin-bottom: 0.7em; font-size: 1.02rem; color: var(--text-primary); }
+        .challenges-block i { color: var(--theme-accent); min-width: 22px; }
+        hr.section-sep { border: none; border-top: 2px solid var(--theme-border); margin: 3.5rem auto 3.5rem auto; max-width: 200px; opacity: 0.25; }
+        @media (max-width: 700px) { .media-gallery { gap: 1rem; } .media-gallery figure { max-width: 100%; } .challenges-block, .project-section-centered { padding-left: 0.5rem; padding-right: 0.5rem; } }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -36,53 +60,73 @@
         </div>
     </header>
     <main>
-        <section id="project-details" class="light-section">
-            <div class="container">
-                <h1 style="margin-bottom:0.5em;">IMCTrack <span class="project-year">(2025)</span></h1>
-                <p class="project-subtitle">Kotlin Android App (UPM Semester)</p>
-                <div class="project-summary">
-                    <p><strong>IMCTrack</strong> is an Android mobile application developed in Kotlin during my international semester at UPM. The app applies advanced mobile development concepts and focuses on user experience and data management.</p>
-                </div>
-                <div class="project-meta">
-                    <ul>
-                        <li><strong>Role:</strong> Android Developer</li>
-                        <li><strong>Tech Stack:</strong> Kotlin, Android</li>
-                        <li><strong>Year:</strong> 2025</li>
-                    </ul>
-                </div>
-                <div class="project-links" style="text-align:center; margin: 2rem 0 2.5rem 0;">
+        <section class="light-section project-section-centered">
+            <div class="project-intro">
+                <h1>IMCTrack <span class="project-year">(2025)</span></h1>
+                <p class="project-subtitle" style="font-size:1.3rem; color:var(--theme-accent); margin-bottom:1.2rem;">Android mobile application for BMI tracking and health monitoring.</p>
+                <p style="font-size:1.15rem; max-width:700px; margin:0 auto 1.2rem auto;">Track your health journey with precision.</p>
+                <p style="font-size:1.08rem; max-width:700px; margin:0 auto 2.5rem auto;">IMCTrack is a comprehensive Android mobile application developed in Kotlin during my international semester at UPM. The app allows users to track their BMI (Body Mass Index) over time, providing features for data entry, visualization, and analysis. This project was an excellent opportunity to deepen my skills in Android development, UI/UX design, and mobile app architecture while focusing on health and wellness technology.</p>
+                <div style="margin-bottom:2.5rem;">
                     <a href="https://github.com/lucasbnrd05/epitie" target="_blank" rel="noopener noreferrer" class="cta-button">
                         <i class="fab fa-github"></i> Source Code
                     </a>
                 </div>
-                <div class="project-description">
-                    <h2>Project Overview</h2>
-                    <p>The app allows users to track their BMI (Body Mass Index) over time, with features for data entry, visualization, and analysis. The project was an opportunity to deepen my skills in Android development and UI/UX design.</p>
-                    <ul>
-                        <li>User authentication and data storage</li>
-                        <li>Interactive charts and data visualization</li>
-                        <li>Modern Android UI with Kotlin</li>
-                        <li>Focus on usability and accessibility</li>
-                    </ul>
-                </div>
-                <div class="screenshot-gallery" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin: 2.5rem 0;">
-                    <figure style="flex:1 1 180px; max-width:220px;">
-                        <img src="../images/projects/IMCTrack.jpg" alt="IMCTrack App Preview" style="width:100%;border-radius:10px;">
-                        <figcaption>App Preview</figcaption>
-                    </figure>
-                </div>
-                <div class="project-challenges">
-                    <h2>Challenges & Learnings</h2>
-                    <ul>
-                        <li>Learning Kotlin and Android best practices</li>
-                        <li>Implementing data visualization in mobile apps</li>
-                        <li>Ensuring responsive and accessible UI</li>
-                        <li>Managing app state and user data securely</li>
-                    </ul>
-                </div>
-                <div style="text-align:center; margin-top: 3.5rem;">
-                    <a href="../projects.html" class="cta-button see-all-button">← Back to All Projects</a>
-                </div>
+            </div>
+            <hr class="section-sep" />
+            <div class="project-card-block">
+                <h3><i class="fas fa-cogs"></i> Stack & Tools</h3>
+                <ul>
+                    <li><b>Languages:</b> Kotlin</li>
+                    <li><b>Platform:</b> Android</li>
+                    <li><b>Tools:</b> Android Studio, Git, GitHub</li>
+                    <li><b>Libraries:</b> Android SDK, Material Design Components</li>
+                </ul>
+            </div>
+            <hr class="section-sep" />
+            <div class="project-card-block">
+                <h3><i class="fas fa-star"></i> Key Features</h3>
+                <ul>
+                    <li><i class="fas fa-user-shield"></i> <b>User Authentication:</b> Secure login and user profile management.</li>
+                    <li><i class="fas fa-database"></i> <b>Data Storage:</b> Local data persistence for BMI records and user information.</li>
+                    <li><i class="fas fa-chart-line"></i> <b>Interactive Charts:</b> Visual representation of BMI trends over time.</li>
+                    <li><i class="fas fa-calculator"></i> <b>BMI Calculator:</b> Automatic BMI calculation based on height and weight inputs.</li>
+                    <li><i class="fas fa-history"></i> <b>Progress Tracking:</b> Historical data analysis and progress monitoring.</li>
+                    <li><i class="fas fa-palette"></i> <b>Modern UI/UX:</b> Material Design implementation with responsive layouts.</li>
+                    <li><i class="fas fa-bell"></i> <b>Notifications:</b> Reminders and alerts for health tracking.</li>
+                </ul>
+            </div>
+            <hr class="section-sep" />
+            <div class="challenges-block">
+                <h2><i class="fas fa-heart"></i> Health & Wellness Focus</h2>
+                <ul>
+                    <li><b>Health Technology:</b> IMCTrack represents the intersection of mobile technology and health monitoring, contributing to the growing field of digital health solutions.</li>
+                    <li><b>User Empowerment:</b> By providing easy-to-use tools for health tracking, the app empowers users to take control of their health journey and make informed decisions.</li>
+                    <li><b>Data Privacy:</b> The app prioritizes user privacy and data security, ensuring personal health information remains confidential and protected.</li>
+                    <li><b>Accessibility:</b> Designed with accessibility in mind, making health tracking available to users of all technical abilities.</li>
+                </ul>
+            </div>
+            <hr class="section-sep" />
+            <h2 style="margin-bottom:2.2rem;">Media Gallery</h2>
+            <div class="media-gallery">
+                <figure>
+                    <img src="../images/projects/IMCTrack.jpg" alt="IMCTrack App Preview">
+                    <figcaption>App Preview</figcaption>
+                </figure>
+            </div>
+            <hr class="section-sep" />
+            <div class="challenges-block">
+                <h2><i class="fas fa-lightbulb"></i> Technical Challenges & Learnings</h2>
+                <ul>
+                    <li>Learning Kotlin and Android development best practices from scratch.</li>
+                    <li>Implementing data visualization and charting in mobile applications.</li>
+                    <li>Ensuring responsive and accessible user interface design.</li>
+                    <li>Managing application state and user data securely.</li>
+                    <li>Working with Android SDK and Material Design components.</li>
+                    <li>Implementing local data persistence and database management.</li>
+                </ul>
+            </div>
+            <div style="text-align:center; margin-top: 3.5rem;">
+                <a href="../projects.html" class="cta-button see-all-button">← Back to All Projects</a>
             </div>
         </section>
     </main>
